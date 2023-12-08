@@ -1,0 +1,294 @@
+@import "../../../assets/scss/index.scss";
+
+.content-drop-1{
+    background: #E7EFFE;
+    border: 1px solid #BDBFC6;
+    border-radius: 8px;
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    padding: 11px;
+    font-family: $font-family-regular;
+    color: $color-primary-blue-200;
+    cursor: pointer;
+
+    div{
+        display: flex;
+        align-items: center;
+    }
+
+    .dwn-point-aberto{
+        margin-right: 12px;
+        color: $color-primary-blue-200;
+    }
+
+    .dwn-point-pendente{
+        margin-right: 12px;
+        color: $color-primary-yellow-200;
+    }
+
+    .dwn-point-resolvido{
+        margin-right: 12px;
+        color: $color-primary-green-200;
+    }
+
+    .dwn-point-excluido{
+        margin-right: 12px;
+        color: $color-primary-red-200;
+    }
+
+
+    .dwn-point-alto{
+        margin-right: 12px;
+        color: $color-primary-yellow-200;
+    }
+
+    .dwn-point-baixo{
+        margin-right: 12px;
+        color: $color-primary-green-200;
+    }
+
+    .dwn-point-medio{
+        margin-right: 12px;
+        color: $color-primary-blue-200;
+    }
+
+    .dwn-point-urgente{
+        margin-right: 12px;
+        color: $color-primary-red-200;
+    }
+
+
+    .dwn-arrow-down{
+        color: #4285F4;
+        font-weight: 600;
+    }
+
+}
+
+.content-drop-1:hover{
+    border: 1px solid #4285F4;
+    box-shadow: 0px 4px 8px rgb(16 18 35 / 16%);
+}
+
+.content-drop-2:hover{
+    border: 1px solid #4285F4;
+    box-shadow: 0px 4px 8px rgb(16 18 35 / 16%);
+}
+
+.content-drop-2{
+    background: #FFFFFF;
+    border: 1px solid #BDBFC6;
+    border-radius: 8px;
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    padding: 11px;
+    font-family: $font-family-regular;
+    color: $color-primary-gry-200;
+    cursor: pointer;
+
+    div{
+        display: flex;
+        align-items: center;
+    }
+
+    .dwn-point-aberto{
+        margin-right: 12px;
+        color: $color-primary-blue-200;
+    }
+
+    .dwn-point-pendente{
+        margin-right: 12px;
+        color: $color-primary-yellow-200;
+    }
+
+    .dwn-point-resolvido{
+        margin-right: 12px;
+        color: $color-primary-green-200;
+    }
+
+    .dwn-point-excluido{
+        margin-right: 12px;
+        color: $color-primary-red-200;
+    }
+
+    .dwn-point-alto{
+        margin-right: 12px;
+        color: $color-primary-yellow-200;
+    }
+
+    .dwn-point-baixo{
+        margin-right: 12px;
+        color: $color-primary-green-200;
+    }
+
+    .dwn-point-medio{
+        margin-right: 12px;
+        color: $color-primary-blue-200;
+    }
+
+    .dwn-point-urgente{
+        margin-right: 12px;
+        color: $color-primary-red-200;
+    }
+
+    .dwn-arrow-down{
+        color: $color-primary-gry-300;
+        font-weight: 600;
+    }
+
+
+}
+
+.content-body-1{
+    background: #FFFFFF;
+    border: 1px solid #BDBFC6;
+    box-shadow: 0px 4px 4px rgb(26 29 38 / 16%);
+    margin-top: 4px;
+    border-radius: 8px;
+    padding: 11px;
+    font-family: $font-family-regular;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    cursor: pointer;
+
+    .dwn-body{
+        display: flex;
+        align-items: center;
+        margin-top: -2px;
+        justify-content: space-between;
+    }
+
+    .dwn-body-active{
+        font-family: $font-family-semi-bold;
+        color: #4285F4;
+        padding: 8px;
+        border: 1px solid #4285F4;
+        border-radius: 2px;
+        background: #E7EFFE;
+    }
+
+    .dwn-body-deactive{
+        padding: 8px;
+    }
+
+    .dwn-body-deactive:hover{
+        font-family: $font-family-semi-bold;
+        padding: 8px;
+        border: 1px solid #4285F4;
+        border-radius: 2px;
+    }
+
+    .dwn-point-aberto{
+        margin-right: 12px;
+        color: $color-primary-blue-200;
+    }
+
+    .dwn-point-pendente{
+        margin-right: 12px;
+        color: $color-primary-yellow-200;
+    }
+
+    .dwn-point-resolvido{
+        margin-right: 12px;
+        color: $color-primary-green-200;
+    }
+
+    .dwn-point-excluido{
+        margin-right: 12px;
+        color: $color-primary-red-200;
+    }
+
+    .dwn-arrow-check{
+        color: #4285F4;
+        font-weight: 600;
+    }
+}
+
+.content-body-2{
+    background: #FFFFFF;
+    border: 1px solid #BDBFC6;
+    box-shadow: 0px 4px 4px rgb(26 29 38 / 16%);
+    margin-top: 4px;
+    border-radius: 8px;
+    padding: 11px;
+    font-family: $font-family-regular;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    cursor: pointer;
+
+    .dwn-body{
+        display: flex;
+        align-items: center;
+        margin-top: -2px;
+        justify-content: space-between;
+    }
+
+    .dwn-body-active{
+        font-family: $font-family-semi-bold;
+        color: #4285F4;
+        padding: 8px;
+        border: 1px solid #4285F4;
+        border-radius: 2px;
+        background: #E7EFFE;
+    }
+
+    .dwn-body-deactive{
+        padding: 8px;
+    }
+
+    .dwn-body-deactive:hover{
+        font-family: $font-family-semi-bold;
+        padding: 8px;
+        border: 1px solid #4285F4;
+        border-radius: 2px;
+    }
+
+    .dwn-point-aberto{
+        margin-right: 12px;
+        color: $color-primary-blue-200;
+    }
+
+    .dwn-point-pendente{
+        margin-right: 12px;
+        color: $color-primary-yellow-200;
+    }
+
+    .dwn-point-resolvido{
+        margin-right: 12px;
+        color: $color-primary-green-200;
+    }
+
+    .dwn-point-excluido{
+        margin-right: 12px;
+        color: $color-primary-red-200;
+    }
+
+    .dwn-point-alto{
+        margin-right: 12px;
+        color: $color-primary-yellow-200;
+    }
+
+    .dwn-point-baixo{
+        margin-right: 12px;
+        color: $color-primary-green-200;
+    }
+
+    .dwn-point-medio{
+        margin-right: 12px;
+        color: $color-primary-blue-200;
+    }
+
+    .dwn-point-urgente{
+        margin-right: 12px;
+        color: $color-primary-red-200;
+    }
+
+    .dwn-arrow-check{
+        color: $color-primary-gry-300;
+        font-weight: 600;
+    }
+}

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="img display-flex-all-center">
+      <img src="../../../assets/images/logo.svg"/>
+    </div>
+  </div>
+  <div class="row">
+    <form [formGroup]="registrationForm">
+      <div class="row">
+        <div class="input-group">
+          <label for="email">E-mail  *</label>
+          <input class="form-control" type="email" formControlName="email" placeholder="email@exemplo.com">
+        </div>
+        <div class="input-group eye">
+          <label for="password">Senha  *</label>
+          <input (focus)="setFocus()"
+          [type]="fieldTextType ? 'text' : 'password'" class="form-control" formControlName="password"  placeholder="********"
+          />
+          <div class="input-group-append">
+              <i class="fa fa-eye" [ngClass]="{'grayEye': !fieldTextType, 'greenEye': fieldTextType}" (click)="toggleFieldTextType()"
+              ></i>
+         </div>
+        </div>
+      </div>
+      <div class="row">
+        <div *ngIf="errorAuth" class="input-group margin-small-bottom-8px red">
+          <span>Usuário e senha incorreto. Tente novamente</span>
+        </div>
+
+        <div *ngIf="showValidateMinCaracterAndContentNumber" class="input-group margin-small-4px red"
+        [ngClass]="registrationForm.controls['password'].value.length >= 1 && registrationForm.controls['password'].value.length < 8 ? 'red' : registrationForm.controls['password'].value.length >= 8 ? 'green' : 'gray' ">
+          <i class="icon-check"></i> <span>Minímo 8 caracteres</span>
+        </div>
+        <div *ngIf="showValidateMinCaracterAndContentNumber" class="row">
+          <div class="input-group margin-small-bottom-4px" [ngClass]="registrationForm.controls['password'].value.length >= 1 && registrationForm['controls']['password'].errors?.['pattern'] ? 'red' : registrationForm.controls['password'].value.length >= 1 && !registrationForm['controls']['password'].errors?.['pattern'] ? 'green' : 'gray' ">
+            <i class="icon-check"></i> <span>Pelo menos 1 número e 1 caractere</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group margin-small-top-8px margin-medium-bottom-40px">
+          <div class="col-sm-12 col-md-7 flex-display">
+            <input type="checkbox" name="remember" id="check" (change)="remember()">
+            <label for="lembrar">Lembrar-me</label>
+          </div>
+          <div class="col-sm-12 col-md-5">
+            <a class="remember" (click)="goRemember()">Esqueceu sua senha?</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+       <div class="input-group">
+          <button [disabled]="(!registrationForm.valid || registrationForm.controls['password'].value.length < 8)" (click)="authenticate()"><span>Login </span><i class="icon-Right arrowButton"></i></button>
+       </div>
+      </div>
+    </form>
+  </div>
+</div>

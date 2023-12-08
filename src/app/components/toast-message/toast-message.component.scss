@@ -1,0 +1,106 @@
+@import "src/assets/scss/index.scss";
+
+.toast-modal {
+  position: absolute;
+  font-family: $font-family-light;
+  z-index: 999;
+  position: absolute;
+  top: 18%;
+  right: 1.125rem;
+  box-shadow: $shadow-small;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: .625rem;
+
+    i {
+      padding: .5rem;
+      font-size: 1.25rem;
+      color: $color-primary-gry-0;
+      border-radius: 1.25rem;
+    }
+  /*.danger {
+    background-color: $color-primary-red-100;
+    border: .0625rem solid $color-primary-red-300;
+    position: absolute;
+    color: $color-primary-gry-400;
+    top: 3rem;
+    right: 1.125rem;
+    box-shadow: $shadow-small;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: .625rem 3.75rem .625rem .625rem;
+
+    i {
+      padding: .5rem;
+      font-size: 1.25rem;
+      color: $color-primary-gry-0;
+      background-color: $color-primary-red-200;
+      margin-right: $h-small-8px;
+    }
+  }
+
+
+    background-color: $color-primary-yellow-100;
+    border: .0625rem solid $color-primary-yellow-300;
+    color: $color-primary-gry-400;
+    top: 3rem;
+    right: 1.125rem;
+    box-shadow: $shadow-small;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: .625rem 3.75rem .625rem .625rem;
+
+    i {
+      padding: .5rem;
+      font-size: 1.25rem;
+      margin-right: $h-small-8px;
+    }
+  }*/
+
+}
+
+.close-modal-toast {
+  margin-left: .5rem !important;
+  background: none !important;
+  font-size: 25px !important;
+  width: 30px;
+  cursor: pointer;
+  color: $color-primary-gry-300 !important;
+}
+
+.success {
+  background-color: $color-primary-green-100;
+  border: .0625rem solid $color-primary-green-300;
+  color: $color-primary-gry-400;
+
+  i {
+      background-color: $color-primary-green-200;
+      margin-right: $h-small-8px;
+  }
+}
+
+.danger {
+  background-color: $color-primary-red-100 !important;
+  border: .0625rem solid $color-primary-red-300 !important;
+  color: $color-primary-gry-400;
+
+  i {
+    margin-right: $h-small-8px;
+    background-color: $color-primary-red-200;
+  }
+}
+
+.attention {
+  background-color: $color-primary-yellow-100;
+  border: .0625rem solid $color-primary-yellow-300;
+  color: $color-primary-gry-400;
+
+  i {
+    margin-right: $h-small-8px;
+    background-color: $color-primary-yellow-200;
+  }
+}

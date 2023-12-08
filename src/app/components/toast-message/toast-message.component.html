@@ -1,0 +1,6 @@
+<div *ngIf="viewToast" class="toast-modal"
+  [ngClass]="typeToast === 'success' ? 'success' : typeToast === 'error' ? 'danger' : 'attention'">
+  <i class="icon-check"
+  [ngClass]="typeToast === 'success' ? 'icon-check' : typeToast === 'error' ? 'icon-close' : 'icon-info'"></i>
+  {{ showMessage }} <i class="icon-close close-modal-toast" (click)="closeToast()"></i>
+</div>

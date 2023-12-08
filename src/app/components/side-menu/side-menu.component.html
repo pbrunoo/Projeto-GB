@@ -1,0 +1,50 @@
+
+<gb-toast-message></gb-toast-message>
+<div class="d-flex flex-column flex-shrink-0 side-menu float-start set-menu" style="width: 4.5rem;">
+    <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+      <img src="../../../assets/images/logo_icon.svg" alt="">
+      <span class="visually-hidden">Icon-only</span>
+    </a>
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+      <li class="nav-item">
+        <a [routerLink]="['/dashboard']" routerLinkActive="active" class="nav-link py-3" aria-current="page" placement="end" ngbTooltip="Dashboard">
+          <i class="icon-Dashboard"></i>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/ticket']" (click)="clearTabs()" routerLinkActive="active" class="nav-link py-3" placement="end" ngbTooltip="Ticket">
+            <i class="icon-ticket"></i>
+        </a>
+      </li>
+      <li>
+        <a (click)="whatsappSelect()" class="nav-link py-3" placement="end" ngbTooltip="Whatsapp">
+            <i class="icon-Whatsapp"></i>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/contact']" routerLinkActive="active" (click)="clearTabs()" class="nav-link py-3"  placement="end" ngbTooltip="Contatos">
+          <i class="icon-Users"></i>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/company']" routerLinkActive="active" (click)="clearTabs()" class="nav-link py-3" placement="end" ngbTooltip="Empresas">
+            <i class="icon-building"></i>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/user']" routerLinkActive="active" (click)="clearTabs()" class="nav-link py-3" placement="end" ngbTooltip="Agentes">
+            <i class="icon-people"></i>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/chat-bot']" routerLinkActive="active" (click)="clearTabs()" class="nav-link py-3" placement="end" ngbTooltip="Chatbot">
+            <i class="icon-Chat_boot"></i>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/number-whatsapp']" routerLinkActive="active" (click)="clearTabs()" class="nav-link py-3 configuration" placement="end" ngbTooltip="Configurações">
+            <i class="icon-settings"></i>
+        </a>
+      </li>
+    </ul>
+  </div>

@@ -1,0 +1,87 @@
+<gb-modal-confirm></gb-modal-confirm>
+<gb-toast-message></gb-toast-message>
+<gb-modal-profile></gb-modal-profile>
+<nav class="navbar navbar-light bg-light set-top-bar">
+
+    <div class="col-9 gb-tab-margin-bottom">
+        <div class="d-flex flex-row bd-highlight gb-tab-margin-left">
+         <!-- <div *ngFor="let tab of controlTabs; index as i">
+            <div class="p-2 bd-highlight gb-set-tab" [ngClass]="index === i ? 'gb-set-tab-active' : ''" (click)="selectedTab(i)">
+              <div class="gb-tab"><img class="gb-icon-tab" src="../../../assets/images/chat_icon.svg" alt="Ticket"></div>
+              <div class="gb-tab"><span>{{title$ | async}}-{{ i+1 }}</span></div>
+              <div class="gb-tab"><img class="gb-icon-tab-close" (click)="closeTab(i)" src="../../../assets/images/close_tab_icon.svg" alt="Close"></div>
+            </div>
+          </div>-->
+          <div *ngIf="tabOne" class="p-2 bd-highlight gb-set-tab" (click)="selectedTab(1)" [ngClass]="selectTab === 1 ? 'gb-set-tab-active' : ''">
+            <div class="gb-tab"><img class="gb-icon-tab" src="../../../assets/images/chat_icon.svg" alt="Ticket"></div>
+            <div class="gb-tab"><span>{{title$ | async}}</span></div>
+            <div class="gb-tab"><img class="gb-icon-tab-close" (click)="closeTab(1)" src="../../../assets/images/close_tab_icon.svg" alt="Close"></div>
+          </div>
+
+          <div *ngIf="tabTwo" class="p-2 bd-highlight gb-set-tab" (click)="selectedTab(2)" [ngClass]="selectTab === 2 ? 'gb-set-tab-active' : ''">
+            <div class="gb-tab"><img class="gb-icon-tab" src="../../../assets/images/chat_icon.svg" alt="Ticket"></div>
+            <div class="gb-tab"><span>{{title$ | async}}-2</span></div>
+            <div class="gb-tab"><img class="gb-icon-tab-close" (click)="closeTab(2)" src="../../../assets/images/close_tab_icon.svg" alt="Close"></div>
+          </div>
+
+          <div *ngIf="tabThree" class="p-2 bd-highlight gb-set-tab" (click)="selectedTab(3)" [ngClass]="selectTab === 3 ? 'gb-set-tab-active' : ''">
+            <div class="gb-tab"><img class="gb-icon-tab" src="../../../assets/images/chat_icon.svg" alt="Ticket"></div>
+            <div class="gb-tab"><span>{{title$ | async}}-3</span></div>
+            <div class="gb-tab"><img class="gb-icon-tab-close" (click)="closeTab(3)" src="../../../assets/images/close_tab_icon.svg" alt="Close"></div>
+          </div>
+
+          <div *ngIf="tabFour" class="p-2 bd-highlight gb-set-tab" (click)="selectedTab(4)" [ngClass]="selectTab === 4 ? 'gb-set-tab-active' : ''">
+            <div class="gb-tab"><img class="gb-icon-tab" src="../../../assets/images/chat_icon.svg" alt="Ticket"></div>
+            <div class="gb-tab"><span>{{title$ | async}}-4</span></div>
+            <div class="gb-tab"><img class="gb-icon-tab-close" (click)="closeTab(4)" src="../../../assets/images/close_tab_icon.svg" alt="Close"></div>
+          </div>
+
+          <div *ngIf="tabFive" class="p-2 bd-highlight gb-set-tab" (click)="selectedTab(5)" [ngClass]="selectTab === 5 ? 'gb-set-tab-active' : ''">
+            <div class="gb-tab"><img class="gb-icon-tab" src="../../../assets/images/chat_icon.svg" alt="Ticket"></div>
+            <div class="gb-tab"><span>{{title$ | async}}-5</span></div>
+            <div class="gb-tab"><img class="gb-icon-tab-close" (click)="closeTab(5)" src="../../../assets/images/close_tab_icon.svg" alt="Close"></div>
+          </div>
+
+          <div *ngIf="tabSix" class="p-2 bd-highlight gb-set-tab" (click)="selectedTab(6)" [ngClass]="selectTab === 6 ? 'gb-set-tab-active' : ''">
+            <div class="gb-tab"><img class="gb-icon-tab" src="../../../assets/images/chat_icon.svg" alt="Ticket"></div>
+            <div class="gb-tab"><span>{{title$ | async}}-6</span></div>
+            <div class="gb-tab"><img class="gb-icon-tab-close" (click)="closeTab(6)" src="../../../assets/images/close_tab_icon.svg" alt="Close"></div>
+          </div>
+
+            <div (click)="openMoreTabs()" class="p-2 bd-highlight" *ngIf="(
+              identifyModule == 'Novo Ticket' ||
+              identifyModule == 'Contatos' ||
+              identifyModule == 'WhatsApp' ||
+              identifyModule == 'Empresas') && this.quantifyTabs.length < 6">
+                <div class="gb-tab-circle-btn"><i class="icon-add span-icon"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-3" (gbOutsideClick)="verifyOutSideClick($event)">
+        <div (click)="openCloseDropDown()" class="d-flex flex-row bd-highlight center-itens justify-content-end cursor">
+            <div class="p-2 gb-tab-circle-btn bd-highlight"><i class="icon-people"></i></div>
+            <div class="p-2 title">
+              <h4>{{ this.user }}</h4>
+              <span>{{ type === 1 ? 'Administrador' : 'Agente' }}</span>
+            </div>
+            <!--<div class="p-2 bd-highlight"><a href="#"><img src="../../../assets/images/notification_icon.svg" alt=""></a></div>
+            <div class="p-2 bd-highlight"><a href="#"><img src="../../../assets/images/search_icon.svg" alt=""></a>
+            </div>-->
+        </div>
+    </div>
+</nav>
+<div class="menu-profile" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+  <div class="title-menu">
+    <h4>{{ this.user }}</h4><span> - {{ type === 1 ? 'Admin' : 'Agente' }}</span>
+  </div>
+  <div class="email">
+    {{ this.email }}
+  </div>
+
+  <ul>
+    <li (click)="openModalProfile()"><i class="icon-people"></i> Editar perfil</li>
+    <li (click)="logout()"><i class="icon-SignOut"></i> Encerrar sessão</li>
+  </ul>
+</div>

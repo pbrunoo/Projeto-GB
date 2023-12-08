@@ -1,0 +1,44 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header" ngbAutofocus>
+		<h4 class="modal-title"><i [ngClass]=" title === 'Editar' ? 'icon-Edit' : title === 'Visualizar' ? 'eye icon-eye' : 'icon-add'"></i> {{ title }} mensagem</h4><hr size="4" width="37%" align="left" color="#404252"><span>*Campos obrigatórios</span>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="botsGreetingForm">
+      <div class="row margin-top-20px">
+        <div class="col-md-12">
+          <label for="name" class="form-label">Título *</label>
+          <input type="text" formControlName="botsName" class="form-control" placeholder="Digite um título para a mensagem">
+        </div>
+        <div class="col-md-12  margin-top-20px">
+          <div class="form-check form-switch">
+            <input class="form-check-input coston-switch" formControlName="botsTypeModel" (change)="activeModelMessage($event)" [checked]="objectGreeting.initialMessageTemplateId || objectGreeting.finalMessageTemplateId" type="checkbox" id="switchPermission">
+            <label class="form-check-label custon-font-size" for="switchPermission">Utilizar modelo de mensagem</label>
+          </div>
+        </div>
+        <div class="col-md-12 margin-top-20px">
+          <label for="name" class="form-label">Mensagem inicial</label>
+          <input type="text" *ngIf="!botsGreetingForm.controls['botsTypeModel'].value" formControlName="botsMessageInicial" class="form-control" placeholder="Digite um modelo de mensagem">
+          <div class="position-relative" [ngClass]="disableDropdown ? 'disable-component' : ''" *ngIf="botsGreetingForm.controls['botsTypeModel'].value">
+            <gb-drop-down-greeting [disabledDrop]="disableDropdown" [dataBotGreetingGroup]="objectModelMessageInitial" [selectBotGreeting]="initialMessageTemplateId" (outDropDownDataBotGreeting)="getSelectedGreetingInicial($event)" ></gb-drop-down-greeting>
+          </div>
+        </div>
+        <div class="col-md-12 margin-top-20px">
+          <label for="name" class="form-label">Mensagem final</label>
+          <input type="text" formControlName="botsMessageFinal" *ngIf="!botsGreetingForm.controls['botsTypeModel'].value" class="form-control" placeholder="Digite um modelo de mensagem">
+          <div class="position-relative" [ngClass]="disableDropdown ? 'disable-component' : ''" *ngIf="botsGreetingForm.controls['botsTypeModel'].value">
+            <gb-drop-down-greeting [disabledDrop]="disableDropdown" [dataBotGreetingGroup]="objectModelMessageFinal" [selectBotGreeting]="finalMessageTemplateId" (outDropDownDataBotGreeting)="getSelectedGreetingFinal($event)"></gb-drop-down-greeting>
+          </div>
+        </div>
+        <div class="col-md-12 margin-top-20px disclaimer">
+          <i class="icon-alert"></i><span>Necessário preencher ao menos um campo de mensagem para adicionar</span>
+        </div>
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="titleButton !== 'Editar' && !botsGreetingForm.valid" class="btn btn-light" [ngClass]="titleButton === 'Editar' ? 'button-edit' : 'button-active'" (click)="saveRegister()"><i [ngClass]=" titleButton === 'Editar' ? 'pencil icon-Edit' :'icon-check'"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

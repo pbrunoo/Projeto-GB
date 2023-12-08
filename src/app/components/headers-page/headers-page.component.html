@@ -1,0 +1,24 @@
+<gb-modal-company></gb-modal-company>
+<gb-modal-contact></gb-modal-contact>
+<gb-modal-teams></gb-modal-teams>
+<gb-modal-user></gb-modal-user>
+<gb-modal-category></gb-modal-category>
+<gb-modal-import-contact-component></gb-modal-import-contact-component>
+<gb-modal-quick-answers></gb-modal-quick-answers>
+<div class="d-flex justify-content-between mt-3  px-4 align-items-center general">
+  <h4> {{ textElements }}</h4>
+  <div [ngClass]="typeModelHeaders === 'NumberWhatsApp' ? 'line-whatsapp' : typeModelHeaders === 'Equipes' || typeModelHeaders === 'Categoria' ? 'line-teams'  : typeModelHeaders === 'respostas rapidas' ? 'line-quick' : 'line'"></div>
+
+  <div *ngIf="typeModelHeaders !=='NumberWhatsApp' && typeModelHeaders !== 'Equipes' && typeModelHeaders !== 'Categoria' && typeModelHeaders !== 'respostas rapidas'" class="col-auto mx-2">
+    <div class="input-group align-items-center py-1 input-search">
+      <div class="input-group-prepend">
+        <i class="icon-search align-lupa"></i>
+      </div>
+      <input type="text" class="form-control" id="inlineFormInputGroup" (keyup)="sendEmitter()" [(ngModel)] = "searchTerm" placeholder="Pesquisar por nome ou e-mail">
+    </div>
+  </div>
+  
+  <button *ngIf="typeModelHeaders === 'Contatos'" class="btn btn-primary import-contact" (click)="openImportContactModal()"><i class="icon-Up"></i> Importar contatos</button>
+  <button *ngIf="typeModelHeaders !=='NumberWhatsApp'" class="btn btn-primary"  (click)="register('Salvar')"><i [ngClass]=" typeModelHeaders === 'Equipes' || typeModelHeaders === 'Categoria' || typeModelHeaders === 'respostas rapidas' ? 'icon-add' : 'icon-people'"></i> {{ typeModelHeaders === 'respostas rapidas' ? 'Nova resposta' : 'Adicionar' + textElements }}</button>
+</div>
+

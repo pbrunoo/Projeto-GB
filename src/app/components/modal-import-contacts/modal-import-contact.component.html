@@ -1,0 +1,19 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header" ngbAutofocus>
+		<h4 class="modal-title"><i class="icon-Up"></i> Importar contatos</h4><hr size="4" width="41%" align="left" color="#404252">
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="userForm">
+        <div>
+          <label for="name" class="form-label">Grupo *</label>
+          <gb-drop-down-group [dataPersonGroup]="listGroup" formControlName="group" labelField="Selecionar o grupo para importar seus contatos"></gb-drop-down-group>
+        </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="!userForm.controls['group'].valid" class="btn btn-light button-active" (click)="saveRegister()"><i class="icon-check"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

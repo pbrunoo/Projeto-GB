@@ -1,0 +1,34 @@
+<div class="main" (gbOutsideClick)="verifyOutSideClick($event)" [ngClass]="disabledDrop ? 'disable-component' : ''">
+  <div class="input-search" (click)="openCloseDropDown()" [attr.aria-expanded]="!isCollapsed">
+      <div><span class="titleName">{{selectNameMessageWhatsapp().name}}</span></div>
+      <div><i class="color-icon" [ngClass]="isCollapsed ? 'icon-down ' : 'icon-Up'"></i></div>
+  </div>
+
+  <div class="body-search" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      <div>
+          <div class="input-search-2">
+              <div>
+                  <i class="icon-search color-icon"></i>
+              </div>
+              <div>
+                  <input placeholder="Buscar por nome, número ou empresa" [(ngModel)]="searchTerm" class="input-element" type="text">
+              </div>
+          </div>
+          <hr class="divider-hr">
+      </div>
+      <div class="results-search">
+        <div class="icon-result-search"><input id="checkAll" (click)="checked('all')" type="checkbox"></div>
+        <div class="data-result-search">
+            <span class="title-person">Todos</span>
+        </div>
+      </div>
+      <div (click)="selectOption(i)" *ngFor="let messageWhatsapp of dataMessageWhatsapp | filterListPerson: searchTerm; index as i">
+          <div class="results-search">
+              <div class="icon-result-search"><input type="checkbox" [id]="messageWhatsapp.id" (click)="selectedCheck(i, messageWhatsapp)"></div>
+              <div class="data-result-search">
+                  <span class="title-person">{{messageWhatsapp.name}}</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

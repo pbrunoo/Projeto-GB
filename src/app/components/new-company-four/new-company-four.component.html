@@ -1,0 +1,119 @@
+<gb-toast-message></gb-toast-message>
+<gb-modal-company></gb-modal-company>
+<gb-headers-page (emitterSearch)="reseivedSearch($event)" [typeModelHeaders]="typeModule"></gb-headers-page>
+<gb-modal-delete (delete)="deleteRegister($event)"></gb-modal-delete>
+<div  *ngIf="objcompany && !showLoad" class="content-page p-4 col-12">
+  <header class="d-flex bd-highlight">
+    <div class="p-2 col-name">
+      Nome
+    </div>
+    <div class="p-2 col-fantasy-name">
+      Nome fantasia
+    </div>
+    <div class="p-2 col-cnpj">
+      CNPJ
+    </div>
+    <div class="p-2 col-email">
+      E-mail
+    </div>
+    <div class="p-2 col-phone">
+      Telefone
+    </div>
+    <div class="p-2 col-register-date">
+      Data cadastro
+    </div>
+    <div class="col-action">
+    </div>
+  </header>
+  <div class="list-content">
+    <div class="d-flex flex-column bd-highlight painel-list" *ngFor="let company of objcompany; let i=index">
+      <div class="col-md-12 d-flex flex-row">
+        <div class="px-2 my-2 col-name">
+          {{ company.name }}
+         </div>
+         <div class="px-2 my-2 col-fantasy-name">
+           {{ company.businessName }}
+         </div>
+         <div class="px-2 my-2 col-cnpj">
+           {{ company.cnpj | mask: '99.999.999/999-99' }}
+         </div>
+         <div class="px-2 my-2 col-email">
+           {{ company.email }}
+         </div>
+         <div class="px-2 my-2 col-phone">
+           {{ company.phone | mask: '(99) 9 99999-9999 || (99) 99999-9999' }}
+         </div>
+         <div class="px-2 my-2 col-register-date">
+           {{ company.createdAt | date: 'dd/MM/yyyy' }}
+         </div>
+         <div class="px-2 my-2 item-action">
+           <i class="mx-1 px-1 lapis icon-Edit" (click)="editCompany('Editar', company.id)"></i>
+           <i (click)="showModalDelete('company' ,company.id)" class="mx-1 p-1 icon-trash"></i>
+
+           <span *ngIf="company.contacts.length !== 0" class="mx-1 item-icon" (click)="toggleContact(collapseContacts, indexIcon)">
+             <i #iIcon+i as #indexIcon class="icon-down"></i>
+           </span>
+         </div>
+      </div>
+      <div>
+        <div #collapse+i as #collapseContacts class="ocult-collapse">
+          <div class="panel-header d-flex bd-highlight">
+            <div class="p-2 col-detail-name">
+              Nome
+            </div>
+            <div class="p-2 col-detail-email">
+              E-mail
+            </div>
+            <div class="p-2 col-detail-phone">
+              Telefone
+            </div>
+            <div class="p-2 col-detail-register-date">
+              Data cadastro
+            </div>
+            <div class="col-detail-action">
+
+            </div>
+          </div>
+          <div class="d-flex bd-highlight panel-body" *ngFor="let contact of company.contacts; index as i">
+            <div class="p-2 col-detail-name">
+              {{ contact.name }}
+            </div>
+            <div class="p-2 col-detail-email">
+              {{ contact.email }}
+            </div>
+            <div class="p-2 col-detail-phone">
+              {{ contact.phone | mask: '(99) 9 99999-9999 || (99) 99999-9999' }}
+            </div>
+            <div class="p-2 col-detail-register-date">
+              {{ contact.createdAt | date: 'dd/MM/yyyy' }}
+            </div>
+            <div class="pr-1 pl-2 py-2 col-detail-action justify-content-start"
+              ngbTooltip="Remover contato"
+              [autoClose]="true"
+              #t="ngbTooltip"
+              (click)="t.open()"
+            >
+              <i class="icon-close" (click)="showModalDelete('company contact', contact.id)"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="showLoad" class="d-flex align-items-center flex-column bd-highlight mb-3 general">
+  <gb-loader></gb-loader>
+</div>
+
+<div *ngIf="!objcompany && !showLoad" class="d-flex align-items-center flex-column bd-highlight mb-3 general">
+  <div class="p-2 pr-0 bd-highlight">
+    <img src="../../../assets/images/caneca.svg">
+  </div>
+  <div class="p-2 bd-highlight">
+    <h4>Nenhuma empresa cadastrada</h4>
+    <span>Após o primeiro cadastro, você poderá visualizar aqui.</span>
+  </div>
+
+</div>

@@ -1,0 +1,64 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title"><i [ngClass]=" title === 'Editar' ? 'icon-Edit' :'icon-people'"></i> {{ title }} agente</h4><hr size="4" width="41%" align="left" color="#404252"><span>*Campos obrigatórios</span>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="userForm">
+      <div class="row margin-top-20px">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Nome *</label>
+          <input type="text" formControlName="userName" class="form-control" placeholder="Digite um nome para o usuário">
+        </div>
+
+        <div class="col-md-6">
+          <label for="name" class="form-label">E-mail *</label>
+          <input type="text" formControlName="email" class="form-control" placeholder="nome@email.com">
+        </div>
+      </div>
+
+      <div class="row margin-top-20px">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Grupo *</label>
+          <gb-drop-down-contact-whatsapp [selectCompanyWhatsappCompany]="idNumberWhatsapp" [dataNumberWhatsapGroup]="objWhatsappNumber" (outDropDowndataWhatsappNumber)="getSelectNumberWhatsappp($event)"></gb-drop-down-contact-whatsapp>
+        </div>
+
+        <div class="col-md-6">
+          <label for="name" class="form-label">Senha *</label>
+          <input type="password" formControlName="password"
+          class="form-control"
+          placeholder="**********"/>
+          <div *ngIf="userForm.controls['password'].value" class="col-md-7 label-validate">
+            <label [ngClass]="userForm.controls['password'].value && userForm.controls['password'].value.length >= 8 ? 'is-valid' :  '' ">• Mínimo 8 caracteres</label>
+            <label [ngClass]="userForm.controls['password'].value && !userForm['controls']['password'].errors?.['pattern'] ? 'is-valid' :  '' ">• Pelo menos 1 número e 1 caractere</label>
+          </div>
+        </div>
+      </div>
+      <div class="row margin-top-20px">
+        <div class="col-md-6">
+          <label for="name" class="form-label col-md-12 d-flex align-items-center">Perfil *</label>
+          <input class="form-check-input custon-radio" formControlName="perfil" type="radio" name="perfil" [value]="1">
+          <label class="form-check-label col-md-5 custon-font-size" for="radioPerfil">
+            Administrativo
+          </label>
+          <input class="form-check-input custon-radio" type="radio" formControlName="perfil" name="perfil" [value]="2">
+          <label class="form-check-label custon-font-size" for="radioPerfil">
+            Usuário
+          </label>
+        </div>
+        <div class="col-md-5">
+          <label for="name" class="form-label col-md-12">Permissão *</label>
+          <div class="form-check form-switch">
+            <input class="form-check-input coston-switch" type="checkbox" [checked]="userForm.controls['permission'].value === true" (change)="activeUser($event)" id="switchPermission">
+            <label class="form-check-label custon-font-size" for="switchPermission">Ativo</label>
+          </div>
+        </div>
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="!userForm.controls['password'].value && !userForm.valid" class="btn btn-light button-active" (click)="saveRegister()"><i class="icon-check"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

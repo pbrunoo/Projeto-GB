@@ -1,0 +1,20 @@
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body d-flex justify-content-center align-items-center flex-column py-0">
+    <i class="icon-arrow_left_right"></i>
+		<h4>Deseja transferir a conversa?</h4>
+    <p>Após envio a mensagem não poderá ser editada ou excluída.</p>
+	<div class="container-dropdown">
+		<gb-drop-down-group 
+			[dataPersonGroup]="responsData"
+			(outDropDownDataPersonGroup)="selectedUser($event)">
+		</gb-drop-down-group>
+	</div>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')"><i class="icon-close" icon-SignOut icon></i> Cancelar</button>
+	<button type="button" [disabled]="transferir.length > 0 ? false : true" class="btn btn-outline-dark delete margin-l-16" (click)="salvar('Save click')"><i class="icon-arrow_left_right"></i> Transferir</button>
+	</div>
+</ng-template>

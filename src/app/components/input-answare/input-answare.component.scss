@@ -1,0 +1,102 @@
+@import "./../../../assets/scss/index.scss";
+
+.header-tabs {
+
+  .tab {
+    padding: 0 24px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 35px;
+    color: $color-primary-gry-400;
+    cursor: pointer;
+  }
+
+  .active-public {
+    color: $color-primary-green-200;
+    font-weight: 600;
+    border-bottom: 2px solid $color-primary-green-200;
+  }
+
+  .active-private {
+    color: $color-primary-yellow-200;
+    font-weight: 600;
+    border-bottom: 2px solid $color-primary-yellow-200;
+    gap: 16px;
+    border-radius: 0px 0px 2px 2px;
+  }
+}
+
+.content {
+  border: 1px solid $color-primary-gry-200;
+
+  textarea {
+    border: none;
+    border: none;
+    padding: 10px 8px;
+    min-height: 120px;
+  }
+
+  .attachments {
+    margin-bottom: 5px;
+    padding: 10px 8px 2px 8px;
+
+    .attachment {
+      color: $color-primary-blue-200;
+      border: 1px solid $color-primary-blue-200;
+      padding: 2px 4px 2px 8px;
+      border-radius: 12px;
+      background-color: $color-primary-blue-100;
+      font-size: 12px;
+      margin-bottom: 8px;
+
+      .remove {
+        padding: 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        border: 1px solid transparent;
+
+        &:hover {
+          border: 1px solid $color-primary-blue-200;
+        }
+      }
+    }
+  }
+}
+
+.footer-actions {
+  margin-top: -5px;
+  border: 1px solid $color-primary-gry-200;
+  padding: 4px 16px;
+  min-height: 52px;
+
+  .btn-light {
+    color: $color-primary-gry-300 !important;
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
+  .btn-primary {
+    background-color: $color-primary-gry-0 !important;
+    border-radius: 8px !important;
+  }
+}
+
+.footer-public {
+  background-color: $color-primary-green-100;
+
+  .btn-primary {
+    border: 1px solid $color-primary-green-200;
+    color: $color-primary-green-200;
+  }
+}
+
+.footer-private {
+  background-color: $color-primary-yellow-100;
+
+  .btn-primary {
+    border: 1px solid $color-primary-yellow-200;
+    color: $color-primary-yellow-200;
+  }
+}

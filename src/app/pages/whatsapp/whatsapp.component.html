@@ -1,0 +1,190 @@
+<gb-modal-transfer></gb-modal-transfer>
+
+<div class="content-page col-md-12 d-flex flex-nowrap">
+  <div class="content-left col-md-4">
+    <div class="row mt-3">
+      <div class="col-title">
+        <h4>WhatsApp</h4>
+      </div>
+      <div class="col-input">
+        <gb-drop-down-contact-whatsapp (outDropDownDataPerson)="getSelectedPerson($event)" ></gb-drop-down-contact-whatsapp>
+      </div>
+      <div class="col-button">
+        <button type="button" class="btn btn-primary button-new"><i class="icon-add"></i> Novo</button>
+      </div>
+    </div>
+
+    <div class="row d-flex flex-nowrap px-2 my-3 mx-0 overflow-hidden">
+      <div class="input-search">
+        <div class="input-group align-items-center py-1">
+          <div class="input-group-prepend">
+            <i class="icon-search align-lupa"></i>
+          </div>
+          <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Pesquisar conversa">
+        </div>
+      </div>
+      <div class="icon-menu">
+        <i class="icon-filtro_no_ready"></i>
+      </div>
+    </div>
+
+    <div class="row px-2">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+          <input type="radio" name="options" id="option1" autocomplete="off">
+            Atendendo <span>20</span>
+        </label>
+        <label class="btn btn-secondary ">
+          <input type="radio" name="options" id="option2" autocomplete="off">
+            Aguardando <span>150</span>
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option3" autocomplete="off">
+            Resolvido
+        </label>
+      </div>
+    </div>
+
+    <div class="row my-2 mx-0 list-contact">
+      <div class="col-md-12 mx-0">
+        <div class="card active-card card-shadow">
+          <div class="color-priority">
+            &nbsp;
+          </div>
+          <div class="image mx-2">
+            <img src="../../../assets/images/img-card.jpeg">
+          </div>
+          <div class="text">
+            <h4>Mariana Cooper</h4>
+            <span>Vou Verificar e te avisar se foi resolvido</span>
+          </div>
+          <div class="div-notification">
+            <span class="notification-message">4</span>
+          </div>
+
+          <div class="icons  py-1">
+            <div class="hours">
+              <span>17:24</span>
+            </div>
+            <div class="icon-card">
+              <i class="icon-eye"></i>
+              <i class="icon-check_double green-color"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card card-shadow">
+          <div class="color-priority">
+            &nbsp;
+          </div>
+          <div class="image mx-2">
+            <img src="../../../assets/images/img-card.jpeg">
+          </div>
+          <div class="text">
+            <h4>Mariana Cooper</h4>
+            <span>Vou Verificar e te avisar se foi resolvido</span>
+          </div>
+          <div class="div-notification">
+            <span class="notification-message">4</span>
+          </div>
+
+          <div class="icons  py-1">
+            <div class="hours">
+              <span>17:24</span>
+            </div>
+            <div class="icon-card">
+              <i class="icon-eye"></i>
+              <i class="icon-check_double green-color"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="content-right col-md-8">
+    <div class="row py-3 px-3 flex-align">
+      <div class="col-image">
+        <img src="../../../assets/images/img-card.jpeg">
+      </div>
+      <div class="col-infor">
+        <h4>Marina Cooper</h4>
+        <span> + 55 62 999101522 </span>
+      </div>
+      <div class="col-level">
+        <span>#2456</span>
+        <div class="drop-limite">
+          <gb-status-drop-down-whatsapp (outDropDownData)="getPriority($event)" [dataDropDown]="dataPriority" [contentColor]="2" [iconBall]="true"></gb-status-drop-down-whatsapp>
+        </div>
+      </div>
+      <div class="col-finish-call">
+        <i class="icon-arrow_left_right"></i>
+        <button>Encerrar conversa</button>
+      </div>
+    </div>
+
+    <div class="content-whatsapp">
+      <div class="row-user-received">
+        <div class="content-user-received">
+          <p>Poderia me enviar a proposta a proposta sobre a qual conversamos anteriormente?</p>
+          <span>9:50</span>
+        </div>
+      </div>
+
+      <div class="row-user-talk">
+          <div class="user-send">
+            Diego Silva
+          </div>
+        <div class="content-user-talk">
+          <p>Só um momento que vou verificar</p>
+          <div class="footer-message">
+            <span>9:50</span>
+            <i class="icon-check green-color"></i>
+          </div>
+        </div>
+      </div>    
+    </div>
+    <div class="footer-whatsapp">
+      <div class="type-message pt-2">
+        <span (click)="selectAba(1)" [ngClass]="abaSelectedOne ? 'active-aba' : ''">
+          Resposta pública
+        </span>
+        <span (click)="selectAba(2)" [ngClass]="abaSelectedTwo ? 'active-aba' : ''">
+          Resposta interna
+        </span>
+      </div>
+      <div class="dialog-message">
+        <div>
+          <i class="icon-emoji margin-left margin-right"></i>
+          <i class="icon-clip margin-right"></i>
+        </div>
+
+        <div class="text-field">
+          <textarea [@fadeInOut] #message *ngIf="showHideTextField" class="m-3" (keyup)="changeIconMessageType(message.value)" placeholder="Mensagem"></textarea>
+        </div>
+        
+        
+        <div [@fadeInOut] *ngIf="recording" class="control-buttons">
+          <!-- <i class="red-recording-dot fa fa-circle" aria-hidden="true"></i> -->
+          <span><i class="icon-trash"></i></span>
+          <span>{{showTime}}</span>
+          <canvas width="141px" #canvaWave class="canva-wave visualizer"></canvas>
+          <span><i class="icon-Pause"></i></span>
+          <span><i class="icon-send"(click)="stopRecord()" ></i></span>
+        </div>
+        <ol id="recordingsList"></ol>
+        <div class="btn-micsend">
+          <i *ngIf="!iconMessageType && micActive" [@fadeIn] class="icon-microphone mx-3 icon-send-pointer" (click)="startRecord()"></i>
+          <i *ngIf="iconMessageType" [@fadeIn] class="icon-send mx-3 icon-send-pointer" ></i>
+        </div>
+  
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="!dataPriority" class="content-right-2 col-md-8">
+    <img src="../../../assets/images/ballon-talk.png"/>
+    <h4>Selecione uma mensagem!</h4>
+    <p>A pesquisa e o histórico da conversa selecionada será carregado.
+      Ao realizar uma nova pesquisa os resultados serão modificados. </p>
+  </div>
+</div>

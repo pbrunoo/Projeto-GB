@@ -1,0 +1,32 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title"><i [ngClass]=" title === 'Editar' ? 'icon-Edit' : 'icon-add'"></i> {{ title }} equipe</h4><hr size="4" width="37%" align="left" color="#404252"><span>*Campos obrigatórios</span>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="numberMessageForm">
+      <div class="row margin-top-20px">
+        <div class="col-md-12">
+          <label for="name" class="form-label">Grupo</label>
+          <input type="text" formControlName="groupName" class="form-control">
+        </div>
+        <div class="col-md-12 margin-top-20px">
+          <label for="name" class="form-label">Equipes</label>
+          <div class="position-relative">
+            <gb-drop-down-teans [dataTeans]="requestTeams" (outDropDownDataTeans)="getSelectedTeams($event)"></gb-drop-down-teans>
+          </div>
+        </div>
+        <div class="col-md-12 d-flex flex-row margin-top-20px">
+          <div *ngFor="let teams of objectTeams; index as i" class="badge color-2" [ngStyle]="{'border': '1px solid ' + teams.color, 'color': teams.color }">
+            <span>{{ teams.name }}</span><i (click)="deleteTeams(teams.id, i)" class="icon-close close"></i>
+          </div>
+        </div>
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="!objectTeams" class="btn btn-light" [ngClass]="titleButton === 'Editar' ? 'button-edit' : 'button-active'" (click)="saveRegister()"><i [ngClass]=" titleButton === 'Editar' ? 'pencil icon-Edit' :'icon-check'"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

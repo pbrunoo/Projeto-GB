@@ -1,0 +1,200 @@
+@import "../../../assets/scss/index.scss";
+
+.date-main {
+
+    .face-date {
+        border: 1px solid $color-primary-blue-200;
+        border-radius: 8px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #FFFFFF;
+        font-family: $font-family-regular;
+        font-size: 14px;
+        color: $color-primary-blue-200;
+        cursor: pointer;
+
+        i {
+            font-size: 18px;
+        }
+
+        span{
+            font-size: 12px;
+        }
+    }
+
+    .body-date {
+        font-family: $font-family-regular;
+        font-size: 14px;
+        padding: 16px;
+        background: #FFFFFF;
+        border: 1px solid #BDBFC6;
+        border-radius: 8px;
+        width: 528px;
+        height: 244px;
+        position: absolute;
+        right: 10px;
+        z-index: 1;
+        margin-top: 4px;
+
+        .tag-date {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+
+            span {
+                background: #FFFFFF;
+                border: 1px solid $color-primary-gry-300;
+                border-radius: 12px;
+                width: 118px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                color: $color-primary-gry-300;
+                cursor: pointer;
+                font-family: $font-family-semi-bold;
+            }
+
+            span:hover {
+                background: #E7EFFE;
+                border: 1px solid $color-primary-blue-200;
+                border-radius: 12px;
+                color: $color-primary-blue-200;
+            }
+
+            .selected-tag {
+                background: #E7EFFE;
+                border: 1px solid $color-primary-blue-200;
+                border-radius: 12px;
+                color: $color-primary-blue-200;
+            }
+        }
+
+        .form-date{
+            display: flex;
+            justify-content: space-between;
+
+            .dateStart{
+                div{
+                    padding: 5px;
+                    height: 44px;
+                    border: 1px solid #BDBFC6;
+                    border-radius: 8px;
+                    display: flex;
+    
+                    input{
+                        border: none;
+                    }
+    
+                    button{
+                        background: none;
+                        border: none;
+                    }
+                }
+            }
+
+            .dateEnd{
+                div{
+                    padding: 5px;
+                    height: 44px;
+                    border: 1px solid #BDBFC6;
+                    border-radius: 8px;
+                    display: flex;
+    
+                    input{
+                        border: none;
+                    }
+    
+                    button{
+                        background: none;
+                        border: none;
+                    }
+                }
+            }
+
+            
+        }
+    }
+
+    .footer-date{
+        div{
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+
+            button{
+                height: 44px;
+                width: 115px;
+                background: #FFFFFF;
+                border: 1px solid #777986;
+                border-radius: 8px;
+            }
+
+            .btn-disabled{
+                background: #F1F1F4;
+                color: #BDBFC6;
+            }
+        }
+    }
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+::ng-deep .dropdown-menu.show {
+    margin-top: 5px !important;
+    margin-left: -5px !important;
+}
+
+::ng-deep .ngb-dp-header {
+    background: none !important;
+}
+
+::ng-deep .ngb-dp-month-name {
+    background: none !important;
+}
+
+::ng-deep .ngb-dp-weekday {
+    font-size: 12px !important;
+    font-style: normal !important;
+    color: $color-primary-gry-400 !important;
+}
+
+::ng-deep .ngb-dp-weekdays {
+    background: none !important;
+    border: none !important;
+}
+
+::ng-deep .btn-light {
+    font-size: 12px !important;
+    font-family: $font-family-regular !important;
+}
+
+::ng-deep .ngb-dp-navigation-chevron {
+    color: $color-primary-gry-400 !important;
+}
+
+::ng-deep .ngb-dp-week {
+    justify-content: space-between !important
+}
+
+::ng-deep .ngb-tp {
+    justify-content: center !important;
+}
+
+::ng-deep .ngb-tp-input-container {
+    width: 40px !important;
+}
+
+::ng-deep .ngb-tp-input {
+    padding: 4px !important;
+}
+
+::ng-deep .ngb-tp-chevron {
+    color: $color-primary-gry-400 !important;
+}
+

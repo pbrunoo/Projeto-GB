@@ -1,0 +1,87 @@
+@import "../../../assets/scss/index.scss";
+
+
+.global-header {
+    margin-top: 20px;
+}
+
+.main-div {
+    margin-top: 16px;
+}
+
+.table-data {
+    font-family: $font-family-regular;
+
+    thead {
+        tr {
+            font-size: 14px;
+            color: $color-primary-gry-300;
+            font-family: $font-family-semi-bold;
+        }
+    }
+
+    tbody {
+        tr {
+            font-size: 14px;
+            font-family: $font-family-regular;
+            color: $color-primary-gry-500;
+        }
+
+        tr {
+            td:nth-child(5) {
+                div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    font-size: 20px;
+
+                    i {
+                        cursor: pointer;
+                    }
+
+                    i:first-child {
+                        color: $color-primary-green-200;
+                    }
+
+                    i:nth-child(2) {
+                        color: $color-primary-red-200;
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+
+.general {
+    height: 70vh;
+
+    img {
+        width: 301px;
+        margin: 0;
+        padding: 0;
+    }
+
+    h4 {
+        text-align: center;
+        font-family: $font-family-bold;
+        color: $color-primary-gry-400;
+        font-size: 16px;
+    }
+
+    span {
+        text-align: center;
+        font-family: $font-family-light;
+        color: $color-primary-gry-400;
+        font-size: 14px;
+    }
+
+
+}
+
+
+
+
+
+

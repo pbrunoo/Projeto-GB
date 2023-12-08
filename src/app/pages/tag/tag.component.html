@@ -1,0 +1,55 @@
+
+<gb-menu-configuration></gb-menu-configuration>
+
+<gb-modal-tag></gb-modal-tag>
+<gb-global-modal (actionData)="deleteTagSelected($event)"></gb-global-modal>
+
+<div class="global-header">
+    <gb-global-header-into (eventclick)="addTag()"></gb-global-header-into>
+</div>
+
+<div *ngIf="false" class="row main-div">
+    <div class="table-responsive">
+        <table class="table table-data">
+            <thead>
+              <tr>
+                <th class="col-4">Título</th>
+                <th class="col-1">Contato</th>
+                <th class="col-1">Criado por</th>
+                <th class="col-1">Data criação</th>
+                <th class="col-1"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>
+                    <div class="action-button">
+                        <i class="icon-Edit"></i>
+                        <i class="icon-trash" (click)="removeTagModal(2)"></i>
+                    </div>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+    </div>
+</div>
+
+
+<div *ngIf="showLoad" class="d-flex align-items-center flex-column bd-highlight mb-3 general">
+  <gb-loader></gb-loader>
+</div>
+
+<div class="d-flex align-items-center flex-column bd-highlight mb-3 general">
+  <div class="p-2 pr-0 bd-highlight">
+    <img src="../../../assets/images/caneca.svg">
+  </div>
+  <div class="p-2 bd-highlight">
+    <h4>Nenhuma tag cadastrada</h4>
+    <span>Após o primeiro cadastro, você poderá visualizar aqui.</span>
+  </div>
+</div>

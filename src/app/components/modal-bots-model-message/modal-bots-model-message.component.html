@@ -1,0 +1,30 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title"><i [ngClass]=" title === 'Editar' ? 'icon-Edit' : title === 'Visualizar' ? 'eye icon-eye' : 'icon-add'"></i> {{ title }} modelo</h4><hr size="4" width="37%" align="left" color="#404252"><span>*Campos obrigatórios</span>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="botsModelMessageForm">
+      <div class="row margin-top-20px">
+        <div class="col-md-12">
+          <label for="name" class="form-label">Nome *</label>
+          <input type="text" formControlName="botsName" class="form-control" placeholder="Digite um nome para a mensagem">
+        </div>
+        <div class="col-md-12 margin-top-20px">
+          <label for="name" class="form-label">Mensagem *</label>
+            <textarea formControlName="botsMessage" class="form-control" placeholder="Digite sua mensagem aqui" rows="7">
+
+            </textarea>
+        </div>
+        <div class="col-md-12 margin-top-20px disclaimer d-flex justify-content-end">
+         <span>{{ botsModelMessageForm.controls['botsMessage'].value ? botsModelMessageForm.controls['botsMessage'].value.length  : '0' }}/1024</span>
+        </div>
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="titleButton !== 'Editar' && !botsModelMessageForm.valid" class="btn btn-light" [ngClass]="titleButton === 'Editar' ? 'button-edit' : 'button-active'" (click)="saveRegister()"><i [ngClass]=" titleButton === 'Editar' ? 'pencil icon-Edit' :'icon-check'"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

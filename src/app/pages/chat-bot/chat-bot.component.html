@@ -1,0 +1,22 @@
+<div *ngIf="true">
+    <div class="row">
+        <div class="top">
+            <h1>ChatBot</h1>
+        </div>
+        <div class="abas">
+            <div class="aba-1" [ngClass]="abas === 1 ? 'active': ''" (click)="selectAba(1)"><span>WhatsBot</span> <span>{{ totalAbasOne }}</span></div>
+            <div class="aba-2" [ngClass]="abas === 2 ? 'active': ''" (click)="selectAba(2)"><span>Campanhas</span> <span>{{ totalAbasTwo }}</span></div>
+            <div class="aba-3" [ngClass]="abas === 3 ? 'active': ''" (click)="selectAba(3)"><span>Modelos de menssagens</span> <span>{{ totalAbasThree }}</span></div>
+        </div>
+    </div>
+
+
+    <gb-bots-greetings (amountEmitter)="getAmount($event)" *ngIf="abas === 1"></gb-bots-greetings>
+    <gb-bots (amountEmitter)="getAmount($event)" *ngIf="abas === 2"></gb-bots>
+    <gb-bots-model-message (amountEmitterModelMessage)="getAmount($event)" *ngIf="abas === 3"></gb-bots-model-message>
+</div>
+<!-- Chatbot whatapp -->
+<div class="row" *ngIf="false">
+    <gb-whats-app-bot></gb-whats-app-bot>
+</div>
+

@@ -1,0 +1,6 @@
+<div class="header-main">
+    <span>{{title}}</span>
+    <button (click)="emitEventClick()" *ngIf="iconButton?.button">
+        <i *ngIf="iconButton?.icon" class="{{iconButton?.classIcon}}"></i> {{titleButton}}
+    </button>
+</div>

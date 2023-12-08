@@ -1,0 +1,131 @@
+@import "../../../assets/scss/index.scss";
+
+.top {
+
+    margin-top: 16px;
+
+    h1 {
+        font-size: 24px;
+        font-family: $font-family-bold;
+        color: $color-primary-gry-400;
+        display: flex;
+        flex-direction: row
+    }
+
+    h1:after {
+        content: "";
+        flex: 1 1;
+        border-bottom: 1px solid #404252;
+        margin: auto;
+    }
+
+    h1:before {
+        margin-right: 10px
+    }
+
+    h1:after {
+        margin-left: 10px
+    }
+}
+
+.abas{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 34px;
+    font-family: 'Inter-regular';
+    font-size: 14px;
+    color: $color-primary-gry-300;
+
+    .aba-1{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border-bottom: 1.5px solid #777986;
+        padding-bottom: 8px;
+
+        span:first-child{
+            margin-right: 8px;
+        }
+
+        span:nth-child(2){
+            padding: 10px;
+            display: flex;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            align-items: center;
+            font-size: 24px;
+            font-family: $font-family-semi-bold;
+            justify-content: space-around;
+            background: $color-primary-gry-100;
+        }
+    }
+
+    .aba-2{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border-bottom: 1.5px solid #777986;
+        padding-bottom: 8px;
+
+        span:first-child{
+            margin-right: 8px;
+        }
+
+        span:nth-child(2){
+            padding: 10px;
+            display: flex;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            align-items: center;
+            font-size: 24px;
+            font-family: $font-family-semi-bold;
+            justify-content: space-around;
+            background: $color-primary-gry-100;
+        }
+    }
+
+    .aba-3{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border-bottom: 1.5px solid #777986;
+        padding-bottom: 8px;
+
+        span:first-child{
+            margin-right: 8px;
+        }
+
+        span:nth-child(2){
+            padding: 10px;
+            display: flex;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            align-items: center;
+            font-size: 24px;
+            font-family: $font-family-semi-bold;
+            justify-content: space-around;
+            background: $color-primary-gry-100;
+        }
+    }
+
+    .aba-1:hover, .aba-3:hover, .aba-2:hover{
+        border-bottom: 2px solid $color-primary-blue-200;
+        color: $color-primary-blue-200;
+        font-family: $font-family-semi-bold;
+        cursor: pointer;
+    }
+
+    .active {
+      border-bottom: 2px solid $color-primary-blue-200;
+        color: $color-primary-blue-200;
+        font-family: $font-family-semi-bold;
+    }
+}
+

@@ -1,0 +1,96 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title"><i class="icon-people"></i> Editar perfil</h4><hr size="4" width="69%" align="left" color="#404252">
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="profileForm">
+      <div class="row margin-top-20px">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Nome completo *</label>
+          <input type="text" formControlName="profileName" class="form-control" placeholder="Digite um nome para o contato">
+        </div>
+
+        <div class="col-md-6">
+          <label for="name" class="form-label">E-mail *</label>
+          <input type="text" formControlName="profileEmail" class="form-control" placeholder="nome@email.com">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="border-bottom"></div>
+        </div>
+      </div>
+      <div class="form-check margin-top-20px d-flex align-items-center">
+        <input class="form-check-input checked mb-1" (change)="enableTemplateMessageField(profileForm.controls['profileChecked'].value)" formControlName="profileChecked" type="checkbox" value="">
+        <label class="form-check-label mb-0" for="repeat-send">
+        Alterar senha
+        </label>
+      </div>
+      <div class="row margin-top-20px">
+        <div class="col-md-6">
+          <label for="password">Digite sua senha atual  *</label>
+          <div class="input-group">
+              <input (focus)="setFocus()"
+              [type]="fieldTextTypeOne ? 'text' : 'password'" class="form-control" formControlName="profilePasswordCurrent"  placeholder="********"
+              />
+            <div class="input-group-append">
+              <i class="fa fa-eye eyes-icon" [ngClass]="{'grayEye': !fieldTextTypeOne, 'greenEye': fieldTextTypeOne}" (click)="toggleFieldTextTypeOne()"
+              ></i>
+            </div>
+          </div>
+          <div *ngIf="successAuth" class="input-group mt-1 red">
+            <span>Senha incorreto. Tente novamente</span>
+          </div>
+        </div>
+      </div>
+      <div class="row margin-top-20px">
+        <div class="col-md-6">
+          <label for="password">Digite sua nova senha  *</label>
+          <div class="input-group">
+              <input (focus)="setFocus()"
+              [type]="fieldTextTypeTwo ? 'text' : 'password'" class="form-control" formControlName="profilePasswordNew"  placeholder="********"
+              />
+            <div class="input-group-append">
+              <i class="fa fa-eye eyes-icon" [ngClass]="{'grayEye': !fieldTextTypeTwo, 'greenEye': fieldTextTypeTwo}" (click)="toggleFieldTextTypeTwo()"
+              ></i>
+            </div>
+            <div class="row" *ngIf="validatorsNewPassword">
+              <div class="red padding-left-zero"
+              [ngClass]="profileForm.controls['profilePasswordNew'].value && profileForm.controls['profilePasswordNew'].value.length < 8 ? 'red' : profileForm.controls['profilePasswordNew'].value && profileForm.controls['profilePasswordNew'].value.length > 7 ? 'green' : 'red' "
+              >
+                <i class="icon-check"></i> <span>Minímo 8 caracteres</span>
+              </div>
+              <div class="red padding-left-zero" [ngClass]="profileForm.controls['profilePasswordNew'].value && profileForm.controls['profilePasswordNew'].value.length >= 1 && profileForm.controls['profilePasswordNew'].errors?.['pattern'] ?
+                'red' :profileForm.controls['profilePasswordNew'].value &&  profileForm.controls['profilePasswordNew'].value.length >= 1 && !profileForm.controls['profilePasswordNew'].errors?.['pattern'] ?
+                'green' : 'red' ">
+                <i class="icon-check"></i> <span>Pelo menos 1 número e 1 caractere</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="password">Confirme sua nova senha  *</label>
+          <div class="input-group">
+              <input (focus)="setFocus()"
+              [type]="fieldTextTypeThree ? 'text' : 'password'" class="form-control" formControlName="profilePasswordAgain"  placeholder="********"
+              />
+            <div class="input-group-append">
+              <i class="fa fa-eye eyes-icon" [ngClass]="{'grayEye': !fieldTextTypeThree, 'greenEye': fieldTextTypeThree}" (click)="toggleFieldTextTypeThree()"
+              ></i>
+            </div>
+          </div>
+          <div *ngIf="passNoEquals" class="red">
+            <span>As senha não coincidem</span>
+          </div>
+        </div>
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="!profileForm.valid" class="btn btn-light button-active" (click)="saveRegister()"><i class="icon-check"></i> Salvar alterações</button>
+	</div>
+</ng-template>

@@ -1,0 +1,13 @@
+<div (gbOutsideClick)="verifyOutSideClick($event)">
+    <div class="content-drop-{{contentColor}}" (click)="openCloseDropDown()" [attr.aria-expanded]="!isCollapsed">
+        <div><i *ngIf="iconBall" class="icon-Point dwn-point-{{returnSelected(dataDropDown).class}}"></i> <span>{{ returnSelected(dataDropDown).option }}</span></div>
+        <div><i class="dwn-arrow-down" [ngClass]="isCollapsed ? 'icon-down ' : 'icon-Up'"></i></div>
+    </div>
+
+    <div class="content-body-{{contentColor}}" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="dwn-body" (click)="selectOption(i)" [ngClass]="items.selected ? 'dwn-body-active' : 'dwn-body-deactive'" *ngFor="let items of dataDropDown; index as i">
+            <div><i *ngIf="iconBall" class="icon-Point dwn-point-{{items.class}}"></i> <span>{{items.option}}</span></div>
+            <div *ngIf="items.selected"><i class="icon-check dwn-arrow-check"></i></div>
+        </div>
+    </div>
+</div>

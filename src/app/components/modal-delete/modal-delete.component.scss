@@ -1,0 +1,51 @@
+@import "src/assets/scss/index.scss";
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-body {
+  font-family: $font-family-regular;
+  color: $color-primary-gry-400;
+
+  i {
+    font-size: 40px;
+    background-color: $color-primary-red-200 !important;
+    color: $color-primary-gry-0 !important;
+    padding: 1.2rem;
+    border-radius: 5rem;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-family: $font-family-bold;
+    font-size: 30px;
+    margin-bottom: 1rem;
+  }
+}
+
+.modal-footer {
+  border-top: none;
+
+  button {
+    width: 130px;
+    height: 44px;
+    background-color: $color-primary-gry-0;
+    border: 1px solid $color-primary-gry-300;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-family: $font-family-light;
+    color: $color-primary-gry-300;
+
+  }
+}
+
+.delete {
+  background-color: $color-primary-red-200 !important;
+  border: none !important;
+  color: $color-primary-gry-0 !important;
+}
+
+.margin-left-16px {
+  margin-left: $h-small-16px;
+}

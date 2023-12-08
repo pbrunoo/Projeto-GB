@@ -1,0 +1,184 @@
+@import "src/assets/scss/index.scss";
+
+.container {
+  background-color: $color-primary-gry-0;
+  width: 100%;
+  max-width: 29.75rem;
+  border-radius: $border_radius-large;
+  padding: $v-medium-48px;
+  box-shadow: $shadow-small;
+
+    .img {
+      width: 100%;
+      margin-bottom: $v-medium-48px;
+
+      img {
+        width: 13.25rem;
+      }
+    }
+
+    input {
+      width: 100%;
+      margin-top: 0.25rem;
+      margin-bottom: 1rem;
+      border: $border_width-dashed-hairline solid $color-primary-gry-200;
+      border-radius: 0.5rem !important;
+      height: 2.75rem;
+      color: $color-primary-gry-500;
+    }
+
+    input:focus {
+      box-shadow: $shadow-small;
+      border: 0.5px solid $color-primary-blue-200;
+    }
+
+    input:-ms-input-placeholder  {
+      font-size:0.875rem;
+      font-family: $font-family-light;
+      font-style: italic;
+    }
+
+    input::-webkit-input-placeholder {
+      font-size:0.875rem;
+      font-family: $font-family-light;
+      font-style: italic;
+    }
+
+    input:-moz-placeholder {
+      font-size:0.875rem;
+      font-family: $font-family-light;
+      font-style: italic;
+    }
+
+/* firefox 19+ */
+    input::-moz-placeholder {
+      font-size:0.875rem;
+      font-family: $font-family-light;
+      font-style: italic;
+    }
+
+    input[type=checkbox] {
+      height: 1rem;
+      width: 1rem;
+      margin-right: 0.416rem;
+    }
+
+    .remember {
+      color: $color-primary-blue-200;
+      cursor: pointer;
+    }
+
+    .icon-check {
+      color: $color-primary-gry-300;
+      margin-right: 0.416rem;
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: 0.75rem;
+      font-family: $font-family-light;
+    }
+
+    button:disabled {
+      width: 100%;
+      background-color: $color-primary-gry-100;
+      border: 1px solid $color-primary-gry-200;
+      border-radius: $border_radius-medium !important;
+      height: 2.75rem;
+      max-width: 23.75rem;
+      font-size: 0.875rem;
+      color: $color-primary-gry-200;
+      cursor: default;
+
+      i {
+        color: $color-primary-gry-200;
+      }
+    }
+
+    button {
+      background-color: $color-primary-blue-200;
+      color: $color-primary-gry-0;
+      cursor: pointer;
+      height: 2.75rem !important;
+      max-width: 23.75rem !important;
+      width: 100%;
+      font-size: 0.875rem !important;
+      border: none !important;
+      border-radius: $border_radius-medium !important;
+
+      i {
+        color: $color-primary-gry-0;
+      }
+    }
+}
+
+
+.display-flex-all-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.margin-small-bottom-4px {
+  margin-bottom: $v-small-4px;
+}
+
+.margin-small-bottom-8px {
+  margin-bottom: $v-small-8px;
+}
+
+.margin-small-top-8px {
+  margin-top: $v-small-8px;
+}
+
+.margin-medium-bottom-40px {
+  margin-bottom: $v-medium-24px;
+}
+
+i {
+  color: $color-primary-gry-300;
+}
+
+.greenEye {
+  color: $color-primary-green-200;
+  cursor: pointer;
+  position: absolute;
+  right: 1.3rem;
+  bottom: 1.7rem;
+  font-size: 1.2rem;
+  z-index: 100;
+}
+
+.grayEye {
+  color: $color-primary-gry-300;
+  cursor: pointer;
+  position: absolute;
+  right: 1.3rem;
+  bottom: 1.7rem;
+  font-size: 1.2rem;
+  z-index: 100;
+}
+
+.flex-display {
+  display: flex;
+}
+
+.arrowButton {
+  position: absolute;
+  right: 1.8rem;
+  bottom: .8rem;
+  font-size: 1rem;
+  z-index: 100;
+}
+
+.red span, .red i{
+  color: $color-primary-red-200 !important;
+}
+
+.green span, .green i{
+  color: $color-primary-green-200 !important;
+}
+
+.gray span, .gray i {
+  color: $color-primary-gry-400 !important;
+}

@@ -1,0 +1,19 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header" ngbAutofocus>
+		<h4 class="modal-title"><i class="icon-add"></i> Adicionar tag</h4><hr size="4" width="41%" align="left" color="#404252">
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="userForm">
+        <div>
+          <label for="name" class="form-label">Tag *</label>          
+		  <input type="text" formControlName="tagName" name="tagName">
+        </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="!userForm.controls['tagName'].valid" class="btn btn-light button-active" (click)="saveRegister()"><i class="icon-check"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

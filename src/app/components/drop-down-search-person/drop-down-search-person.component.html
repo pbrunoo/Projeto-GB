@@ -1,0 +1,32 @@
+<div class="main" (gbOutsideClick)="verifyOutSideClick($event)">
+    <div class="input-search" [style.background-color]="dropDownBackGroundFace" (click)="openCloseDropDown()" [attr.aria-expanded]="!isCollapsed">
+        <div><span>{{_name}}</span></div>
+        <div><i class="color-icon" [ngClass]="isCollapsed ? 'icon-down ' : 'icon-Up'"></i></div>
+    </div>
+
+    <div class="body-search" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div *ngIf="showSearchField">
+            <div class="input-search-2">
+                <div>
+                    <i class="icon-search color-icon"></i>
+                </div>
+                <div>
+                    <input placeholder="Consultar..." [(ngModel)]="searchTerm" class="input-element" type="text">
+                </div>
+            </div>
+            <hr class="divider-hr">
+        </div>
+        
+        <div (click)="selectOption(i)" *ngFor="let person of dataPerson | filterListPerson: searchTerm; index as i">
+            <div class="results-search">
+                <div class="icon-result-search" *ngIf="nameIcon !== 'none'"><i class="{{nameIcon}}"></i></div>
+                <div class="data-result-search">
+                    <span class="title-person">{{person.name}}</span>
+                    <span class="data-person">{{person.cnpj}}</span>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="main-select">
+    <div class="face-select" (click)="toggleArrow()" (gbOutsideClick)="verifyOutSideClick($event)">
+        <span>{{resolveTitle()}}</span> <i [ngClass]="controlArrow ? 'icon-Up' : 'icon-down'"></i>
+    </div>
+    <div class="body-select" *ngIf="controlArrow" [@fadeInOut]>
+        <ul>
+            <li (click)="markSelectedItem(i)" *ngFor="let team of listData | sortBy:'asc':'name'; index as i" [ngClass]="team.selected ? 'selected-item' : ''">
+                <i class="icon-Users"></i> <span>{{team.name}}</span>
+            </li>
+        </ul>
+    </div>
+</div>

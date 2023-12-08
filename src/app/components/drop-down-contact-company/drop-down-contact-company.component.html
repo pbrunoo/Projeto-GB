@@ -1,0 +1,32 @@
+<div class="main" (gbOutsideClick)="verifyOutSideClick($event)">
+    <div class="input-search" (click)="openCloseDropDown()" [attr.aria-expanded]="!isCollapsed">
+        <div><span class="titleName" *ngIf="!selectNameCompany().selected;else otheTilte">{{selectNameCompany().title}}</span><ng-template #otheTilte><i class="icon-building"></i><span class="titleNameSelected">{{selectNameCompany().title}}</span></ng-template></div>
+        <div><i class="color-icon" [ngClass]="isCollapsed ? 'icon-down ' : 'icon-Up'"></i></div>
+    </div>
+
+    <div class="body-search" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div>
+            <div class="input-search-2">
+                <div>
+                    <i class="icon-search color-icon"></i>
+                </div>
+                <div>
+                    <input placeholder="Consultar..." [(ngModel)]="searchTerm" class="input-element" type="text">
+                </div>
+            </div>
+            <hr class="divider-hr">
+        </div>
+
+        <div (click)="selectOption(i)" *ngFor="let company of dataCompany | filterListPerson: searchTerm; index as i">
+            <div class="results-search">
+                <div class="icon-result-search"><i class="icon-filtro_no_ready"></i></div>
+                <div class="data-result-search">
+                    <span class="title-person">{{company.name}}</span>
+                    <span class="data-person">{{company.cnpj}}</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

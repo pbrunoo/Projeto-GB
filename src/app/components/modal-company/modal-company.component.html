@@ -1,0 +1,63 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header" ngbAutofocus>
+		<h4 class="modal-title"><i [ngClass]=" title === 'Editar' ? 'icon-Edit' :'icon-building'"></i> {{ title }} empresa</h4><hr size="4" width="60%" align="left" color="#404252"><span>*Campos obrigatórios</span>
+		<button type="button" class="btn-close close-btn" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="companyForm">
+      <div class="row margin-top-20px">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Nome *</label>
+          <input type="text" formControlName="companyName" class="form-control" placeholder="Digite um nome para a empresa">
+        </div>
+
+        <div class="col-md-6">
+          <label for="name" class="form-label">Nome Fantasia</label>
+          <input type="text" formControlName="fantasyName" class="form-control" placeholder="Digite um nome fantasia para a empresa">
+        </div>
+      </div>
+
+      <div class="row margin-top-20px">
+        <div class="col-md-4">
+          <label for="name" class="form-label">CNPJ *</label>
+          <input type="text" formControlName="cnpj"
+          class="form-control"
+          placeholder="XX.XXX.XXX/XXX-XX"
+          mask="00.000.000/0000-00">
+        </div>
+
+        <div class="col-md-4">
+          <label for="name" class="form-label">E-mail *</label>
+          <input type="text" formControlName="email" class="form-control" placeholder="email@email.com">
+        </div>
+
+        <div class="col-md-4">
+          <label for="name" class="form-label">Telefone *</label>
+          <input type="text"
+          formControlName="phone" class="form-control"
+          placeholder="XX XXXXX XXXX"
+          mask="(00) 0 0000-0000 || (00) 0000-0000">
+        </div>
+      </div>
+      <div class="row margin-top-20px">
+        <div class="col-md-3 ajust-select">
+          <label for="name" class="form-label">Contato</label>
+          <gb-drop-down-search-person [dataPerson]="requestContact" (outDropDownDataPerson)="getSelectedPerson($event)" ></gb-drop-down-search-person>
+        </div>
+      </div>
+      <div class="row margin-top-20px margin-bottom-20px">
+        <div class="d-flex flex-row bd-highlight mb-3">
+          <div class="badge-company" *ngFor="let itemContact of objContact; let i=index">
+            <i class="icon-people"></i><span class="">{{ itemContact.name  |  slice:0:20 }}</span><i class="icon-close close" (click)="deleteContact(itemContact.id, i)"></i>
+          </div>
+        </div>
+      </div>
+
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="!companyForm.valid && titleButton === 'Salvar'" class="btn btn-light button-active" (click)="saveRegister()"><i class="icon-check"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

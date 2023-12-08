@@ -1,0 +1,51 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title"><i [ngClass]=" title === 'Editar' ? 'icon-Edit' : 'icon-add'"></i> {{ title }} Respostas rápidas</h4><hr size="4" width="15%" align="left" color="#404252">
+		<button type="button" class="btn-close" aria-label="Close" (click)="cancelRegister()"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="quickAnswersForm">
+      <div class="row margin-top-20px">
+        <div class="col-md-12">
+          <label for="name" class="form-label">Atalhos *</label>
+          <input type="text" formControlName="shortcuts" mask="AA?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?A?" placeholder="Insira uma palavra" class="form-control">
+          <span class="disclaimer margin-top-8px">
+            Permitido apenas letras, números e no máximo 26 caracteres.
+          </span>
+          <span class="disclaimer">
+            Não permitido utilizar espaço.
+          </span>
+          <span class="disclaimer">
+            Para usar as repostas rápidas, digite “/atalho” durante a conversa.
+          </span>
+        </div>
+        <div class="col-md-12 margin-top-8px">
+          <label for="name" class="form-label">Mensagem *</label>
+          <textarea formControlName="message" class="form-control" placeholder="Digite sua mensagem aqui" rows="7"></textarea>
+          <span class="disclaimer">
+            *Campos obrigatórios
+          </span>
+        </div>
+        <div class="col-md-12 margin-top-20px">
+          <label for="name" class="form-label">Compartilhar equipes *</label>
+          <div class="position-relative">
+            <gb-drop-down-teans [dataTeans]="requestTeams" [controlDisable] = "disableDropdown" (outDropDownDataTeans)="getSelectedTeams($event)"></gb-drop-down-teans>
+          </div>
+        </div>
+        <div class="col-md-12 d-flex flex-row flex-wrap margin-top-20px">
+          <div *ngFor="let teams of objectTeams; index as i" class="badge color-2" [ngStyle]="{'border': '1px solid ' + teams.color, 'color': teams.color }">
+            <span>{{ teams.name }}</span><i (click)="deleteTeams(teams.id, i)" class="icon-close close"></i>
+          </div>
+        </div>
+      </div>
+      <span class="disclaimer">
+        *Campos obrigatórios
+      </span>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="!quickAnswersForm" class="btn btn-light" [ngClass]="titleButton === 'Editar' ? 'button-edit' : 'button-active'" (click)="saveRegister()"><i [ngClass]=" titleButton === 'Editar' ? 'pencil icon-Edit' :'icon-check'"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

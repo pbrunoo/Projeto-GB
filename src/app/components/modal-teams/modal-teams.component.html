@@ -1,0 +1,50 @@
+<gb-toast-message></gb-toast-message>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title"><i [ngClass]=" title === 'Editar' ? 'icon-Edit' : 'icon-add'"></i> {{ title }} Equipes</h4><hr size="4" width="37%" align="left" color="#404252">
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="teamsForm">
+      <div class="row margin-top-20px">
+        <div class="col-md-12">
+          <label for="name" class="form-label">Nome *</label>
+          <input type="text" formControlName="teamName" class="form-control" placeholder="Atendimento">
+        </div>
+        <div class="col-md-12 margin-top-20px">
+          <label for="name" class="form-label">Cores *</label>
+          <div class="border-elipse  d-flex flex-wrap">
+            <div (click)="getColor('#D32F2F')" [ngClass]="color === '#D32F2F' ? 'actived' : ''" class="elipse color-elipe-1"></div>
+            <div (click)="getColor('#7B1FA2')" [ngClass]="color === '#7B1FA2' ? 'actived' : ''" class="elipse color-elipe-2"></div>
+            <div (click)="getColor('#303F9F')" [ngClass]="color === '#303F9F' ? 'actived' : ''" class="elipse color-elipe-3"></div>
+            <div (click)="getColor('#00A1F9')" [ngClass]="color === '#00A1F9' ? 'actived' : ''" class="elipse color-elipe-4"></div>
+            <div (click)="getColor('#00796B')" [ngClass]="color === '#00796B' ? 'actived' : ''" class="elipse color-elipe-5"></div>
+            <div (click)="getColor('#84AD3D')" [ngClass]="color === '#84AD3D' ? 'actived' : ''" class="elipse color-elipe-6"></div>
+            <div (click)="getColor('#FBC02D')" [ngClass]="color === '#FBC02D' ? 'actived' : ''" class="elipse color-elipe-7"></div>
+            <div (click)="getColor('#F57C00')" [ngClass]="color === '#F57C00' ? 'actived' : ''" class="elipse color-elipe-8"></div>
+            <div (click)="getColor('#5D4037')" [ngClass]="color === '#5D4037' ? 'actived' : ''" class="elipse color-elipe-9"></div>
+            <div (click)="getColor('#C2185B')" [ngClass]="color === '#C2185B' ? 'actived' : ''" class="elipse color-elipe-10"></div>
+            <div (click)="getColor('#512DA8')" [ngClass]="color === '#512DA8' ? 'actived' : ''" class="elipse color-elipe-11"></div>
+            <div (click)="getColor('#1976D2')" [ngClass]="color === '#1976D2' ? 'actived' : ''" class="elipse color-elipe-12"></div>
+            <div (click)="getColor('#0097A7')" [ngClass]="color === '#0097A7' ? 'actived' : ''" class="elipse color-elipe-13"></div>
+            <div (click)="getColor('#388E3C')" [ngClass]="color === '#388E3C' ? 'actived' : ''" class="elipse color-elipe-14"></div>
+            <div (click)="getColor('#E3E94B')" [ngClass]="color === '#E3E94B' ? 'actived' : ''" class="elipse color-elipe-15"></div>
+            <div (click)="getColor('#E64A19')" [ngClass]="color === '#E64A19' ? 'actived' : ''" class="elipse color-elipe-16"></div>
+            <div (click)="getColor('#1D292F')" [ngClass]="color === '#1D292F' ? 'actived' : ''" class="elipse color-elipe-17"></div>
+            <div (click)="getColor('#638A9C')" [ngClass]="color === '#638A9C' ? 'actived' : ''" class="elipse color-elipe-18"></div>
+          </div>
+        </div>
+        <div class="col-md-12 margin-top-20px">
+          <label for="name" class="form-label">Chatbot</label>
+          <div class="position-relative">
+            <gb-drop-down-message-whatsapp [dataMessageWhatsappGroup]="objectMessageWhatsapp" [selectMessageWhatsapp]="setMessageWhatsappId" (outDropDownDataMessageWhatsapp)="getSelectedMessageWhatsappId($event)"></gb-drop-down-message-whatsapp>
+          </div>
+        </div>
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="cancelRegister()"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" [disabled]="titleButton !== 'Editar' && !teamsForm.valid" class="btn btn-light" [ngClass]="titleButton === 'Editar' ? 'button-edit' : 'button-active'" (click)="saveRegister()"><i [ngClass]=" titleButton === 'Editar' ? 'pencil icon-Edit' :'icon-check'"></i> {{ titleButton }}</button>
+	</div>
+</ng-template>

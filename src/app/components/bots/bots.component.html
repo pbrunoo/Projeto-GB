@@ -1,0 +1,60 @@
+<gb-modal-chatbot-schedule (actionData)="handlerSaveData($event)"></gb-modal-chatbot-schedule>
+<gb-modal-chatbot-schedule-editview (actionData)="handlerSaveData($event)"></gb-modal-chatbot-schedule-editview>
+
+<div *ngIf="!this.allMessage && !loading" class="row">
+    <div class="main-body without-items">
+        <div>
+            <img class="img-empty" src="../../../assets/images/caneca.svg" alt="Caneca">
+            <div class="empty-text">
+                <span>Nenhuma campanha cadastrada</span>
+                <span>Após o primeiro cadastro, você poderá visualizar aqui.</span>
+            </div>
+            <div class="empty-button">
+                <button (click)="newSchedule()">
+                    <i class="icon-calendar"></i>
+                    Nova campanha
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loading" *ngIf="loading"><gb-loader></gb-loader></div>
+
+<gb-toast-message></gb-toast-message>
+<gb-modal-delete (emitOtherData)="deleteMessageSchedule($event)"></gb-modal-delete>
+
+<div class="row" *ngIf="this.allMessage && !loading">
+  <div class="empty-button">
+    <button (click)="newSchedule()">
+      <i class="icon-calendar"></i>
+      Novo agendamento
+    </button>
+  </div>
+
+
+  <div class="table-responsive table-main" *ngIf="!loading">
+    <table class="table">
+      <thead>
+        <tr class="header-tables">
+          <th>Titulo do agendamento</th>
+          <th>Data disparo</th>
+          <th>Repetição</th>
+          <th class="status">Stataus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let msg of allMessage | sortBy:'desc'; index as i">
+          <td>{{msg.title}}</td>
+          <td>{{msg.sendDate | date: 'dd/MM/yyyy HH:mm:ss'}} </td>
+          <td>{{msg.repeatSendDate | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+          <td class="actions">
+            <div [ngClass]="msg.status === 1 ? 'status-wainting' : msg.status === 2 ? 'status-sender' : 'status-fail'"><span>{{resolveStatus(msg.status)}}</span></div> <span class="btn-view"><i class="icon-eye"
+                (click)="openEditModal(msg.id, 'view')"></i> </span> <span class="btn-edit"><i class="icon-Edit"
+                (click)="openEditModal(msg.id, 'edit')"></i></span> <span (click)="deleteMessageToModal(msg.id, i)" class="btn-delete"><i
+                class="icon-trash"></i></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

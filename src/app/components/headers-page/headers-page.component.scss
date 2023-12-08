@@ -1,0 +1,97 @@
+@import "../../../assets/scss/index.scss";
+.general {
+  font-family: $font-family-regular;
+  color: $color-primary-gry-400;
+
+  h4 {
+    margin-right: $h-small-8px;
+  }
+
+  .line {
+    background-color: $color-primary-gry-400;
+    height: .0625rem;
+    width: 100%;
+  }
+
+  .line-whatsapp {
+    background-color: $color-primary-gry-400;
+    height: .0625rem;
+    width: 75% !important;
+  }
+
+  .line-teams {
+    background-color: $color-primary-gry-400;
+    height: .0625rem;
+    width: 66% !important;
+  }
+
+  .line-quick {
+    background-color: $color-primary-gry-400;
+    height: .0625rem;
+    width: 57% !important;
+  }
+
+  input {
+    width: 25rem;
+    background-color: $color-primary-gry-0;
+    border: $border_width-dashed-hairline solid $color-primary-gry-200;
+    border-radius: 0.5rem !important;
+    padding-left: 1.875rem;
+    height: 2.75rem;
+    color: $color-primary-gry-500;
+  }
+
+  input:focus {
+    box-shadow: $shadow-small;
+    border: 0.5px solid $color-primary-blue-200;
+  }
+
+  input:-ms-input-placeholder  {
+    font-size:0.875rem;
+    font-family: $font-family-light;
+    font-style: italic;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size:0.875rem;
+    font-family: $font-family-light;
+    font-style: italic;
+  }
+
+  input:-moz-placeholder {
+    font-size:0.875rem;
+    font-family: $font-family-light;
+    font-style: italic;
+  }
+
+/* firefox 19+ */
+  input::-moz-placeholder {
+    font-size:0.875rem;
+    font-family: $font-family-light;
+    font-style: italic;
+  }
+
+  .align-lupa {
+    color: $color-primary-gry-300;
+    background: none;
+    position: absolute;
+    left: 0;
+    bottom: 0.6rem;
+    font-size: 1.2rem;
+    z-index: 100;
+    padding: .25rem;
+    font-size: 1.5rem;
+  }
+
+  button {
+    min-width: 12.5rem;
+    height: 2.75rem;
+  }
+
+  .import-contact {
+    border: 0.5px solid $color-primary-blue-200;
+    color: $color-primary-blue-200;
+    background-color: $color-primary-gry-0;
+    margin-right: $h-small-8px;
+  }
+}

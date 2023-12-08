@@ -1,0 +1,37 @@
+<form (submit)="save($event)">
+  <div class="d-flex header-tabs">
+    <div class="tab" [ngClass]="{'active-public': activeTab === 0}" (click)="setTab(0)">
+      Resposta pública
+    </div>
+    <div class="tab" [ngClass]="{'active-private': activeTab === 1}" (click)="setTab(1)">
+      Resposta interna
+    </div>
+  </div>
+  <div class="content">
+    <textarea [formControl]="formgroup | formControl: 'text'" class="w-100" rows="4"></textarea>
+    <div class="attachments" *ngIf="(formgroup | formControl: 'attachment').value?.length">
+      <ng-container *ngFor="let attachment of ((formgroup | formControl: 'attachment').value) ?? []; let i = index">
+        <div class="attachment d-flex justify-content-between align-items-center">
+          <span>
+            <i class="icon-file"></i>
+            {{ attachment }}
+          </span>
+          <i class="icon-close remove" (click)="removeFile(i)"></i>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="footer-actions d-flex align-items-center justify-content-between"
+    [ngClass]="{'footer-public': activeTab === 0, 'footer-private': activeTab === 1}">
+    <gb-uploader-image (newFile)="newFile($event)"></gb-uploader-image>
+    <div class="d-flex" *ngIf="isIndependent">
+      <button type="reset" class="btn btn-light me-1" (click)="formgroup.reset()">
+        Cancelar
+      </button>
+      <button type="submit" class="btn btn-primary" [disabled]="formgroup.invalid">
+        <i class="icon-add anexo"></i>
+        Nova mensagem
+      </button>
+    </div>
+  </div>
+</form>

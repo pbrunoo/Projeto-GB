@@ -1,0 +1,111 @@
+@import "../../../assets/scss/index.scss";
+
+.content-page {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 305px);
+  height: 82vh;
+  overflow-y: auto;
+
+  header {
+    font-size: 14px;
+    font-family: $font-family-regular;
+    color: $color-primary-gry-300;
+    border-bottom: 1px solid $color-primary-gry-200;
+
+    .col-title {
+      width: 80%;
+    }
+
+    .col-date {
+      width: 10%;
+    }
+
+    .col-action {
+      width: 8%;
+    }
+  }
+
+  .list-content {
+
+    font-size: 14px;
+    font-family: $font-family-light;
+    color: $color-primary-gry-400;
+
+    .painel-list {
+      border-bottom: 1px solid $color-primary-gry-200;
+    }
+
+     .col-title {
+      width: 80%;
+    }
+
+    .col-date {
+      width: 10%;
+    }
+
+
+    .col-action {
+      width: 8%;
+      cursor: pointer;
+
+      i {
+        font-size: 22px;
+        color: $color-primary-gry-300;
+        font-family: $font-family-bold;
+      }
+    }
+  }
+
+  button {
+    font-size: 12px;
+    font-family: $font-family-regular;
+    width: 90%;
+    border-radius: $border_radius-medium;
+    border: 1px solid $color-primary-gry-300;
+    padding: .3rem;
+  }
+}
+
+.general {
+  height: 70vh;
+  margin-top: 180px;
+  img {
+    width: 301px;
+    margin: 0;
+    padding: 0;
+  }
+
+  h4 {
+    text-align: center;
+    font-family: $font-family-bold;
+    color: $color-primary-gry-400;
+    font-size: 16px;
+  }
+
+  span {
+    text-align: center;
+    font-family: $font-family-light;
+    color: $color-primary-gry-400;
+    font-size: 14px;
+  }
+
+
+}
+
+
+.button-connect {
+  background-color: $color-primary-green-100;
+  border: 1px solid $color-primary-green-200 !important;
+  color: $color-primary-green-200;
+}
+
+.button-desconnect {
+  background-color: $color-primary-red-100;
+  border: 1px solid $color-primary-red-200 !important;
+  color: $color-primary-red-200;
+}
+
+.img {
+  width: 20px !important;
+}

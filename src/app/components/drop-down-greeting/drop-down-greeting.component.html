@@ -1,0 +1,31 @@
+<div class="main" (gbOutsideClick)="verifyOutSideClick($event)" [ngClass]="disabledDrop ? 'disable-component' : ''">
+  <div class="input-search" (click)="openCloseDropDown()" [attr.aria-expanded]="!isCollapsed">
+      <div><span class="titleName" *ngIf="!selectNameBotGreeting().selected;else otheTilte">{{selectNameBotGreeting().message}}</span><ng-template #otheTilte><i class="icon-building"></i><span class="titleNameSelected">{{selectNameBotGreeting().message}}</span></ng-template></div>
+      <div><i class="color-icon" [ngClass]="isCollapsed ? 'icon-down ' : 'icon-Up'"></i></div>
+  </div>
+
+  <div class="body-search" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      <div>
+          <div class="input-search-2">
+              <div>
+                  <i class="icon-search color-icon"></i>
+              </div>
+              <div>
+                  <input placeholder="Consultar..." [(ngModel)]="searchTerm" class="input-element" type="text">
+              </div>
+          </div>
+          <hr class="divider-hr">
+      </div>
+
+      <div (click)="selectOption(i)" *ngFor="let botGreeting of dataBotGreeting | filterListPerson: searchTerm; index as i">
+          <div class="results-search">
+              <div class="icon-result-search"><i class="icon-filtro_no_ready"></i></div>
+              <div class="data-result-search">
+                  <span class="title-person">{{botGreeting.message}}</span>
+              </div>
+          </div>
+
+
+      </div>
+  </div>
+</div>

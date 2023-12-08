@@ -1,0 +1,256 @@
+<div class="wa-main row">
+    <!-- Left collum -->
+    <div class="wa-col-left col-3">
+        <!-- Direcionamento -->
+        <div *ngIf="triggerDirection" class="wa-fields-direction">
+            <div>
+                <span>
+                    <i class="icon-Play"></i>
+                </span>
+                <span>Direcionamento de equipe</span>
+                <i class="icon-close"></i>
+            </div>
+
+            <div>
+                <label>Equipes</label>
+                <gb-drop-down-search-person
+                    [showSearchField]="false" 
+                    dropDownBackGroundFace="#fff" 
+                    [dataPerson]="allTeams"    
+                    (outDropDownDataPerson)="selectTeam($event)"   
+                >
+                </gb-drop-down-search-person>
+
+                <div *ngIf="selectedTeams.length > 0" class="tag-selected-teams">    
+                    <span *ngFor="let tag of selectedTeams; index as i">
+                        {{tag.name}} <i class="icon-close" (click)="remoevTagTeam(i)"></i>
+                    </span>                
+                </div>
+
+                <div class="wa-info">
+                    <span><i class="icon-alert"></i></span>
+                    <span>Necessário selecionar o mínimo de duas equipe. Após as mesmas serão inseridas automaticamente no campo mensagem de direcionamento. </span>
+                </div>
+            </div>
+
+            <div>
+                <label>Mensagem de direcionamento *</label>
+                <div class="wa-message-direction" #waMessage contenteditable="true" (input)="removePlaceHolderCustom()" (keydown.backspace)="autoHeight(waMessage)" (keydown.delete)="autoHeight(waMessage)" (keyup)="autoHeight(waMessage)">
+                    <span *ngIf="placeholderCustom">Digite sua mensagem</span>
+                    <ul>
+                        <li *ngFor="let item of selectedTeams; index as i">
+                            {{i + 1}} {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+                <!-- <textarea name="waMessageDirection" #waMessage (keydown.delete)="autoHeight(waMessage)" (keyup)="autoHeight(waMessage)" placeholder="Digite sua mensagem" id="waMessage" cols="30" rows="10"> -->
+                    
+                <!-- </textarea> -->
+            </div>
+
+            <div>
+                <label>Texto da mensagem sucesso *</label>
+                <textarea name="waMessageSuccess" placeholder="Digite sua mensagem" id="waMessage" cols="30" rows="10"></textarea>
+            </div>
+
+            <div>
+                <label>Texto da mensagem erro *</label>
+                <textarea name="waMessageError" placeholder="Digite sua mensagem" id="waMessage" cols="30" rows="10"></textarea>
+            </div>
+
+
+        </div>
+
+        <!-- Mensagem -->
+        <div [@fadeInOut] *ngIf="triggerMessage" class="wa-fields-message">
+            <div>
+                <span>
+                    <i class="icon-chat"></i>
+                </span>
+                <span>Mensagem</span>
+                <i class="icon-close"></i>
+            </div>
+
+            <form [formGroup]="formMessageDirection">          
+                <div>
+                    <label>Mensagem *</label>
+                    <textarea formControlName="messageField" #messageField (keydown.backspace)="autoHeight(messageField)" (keydown.delete)="autoHeight(messageField)" (keyup)="autoHeight(messageField)" name="messageField" id="messageField" cols="30" rows="10"></textarea>
+                </div>
+            </form>
+
+        </div>
+
+        <!-- Configurações -->
+        <div class="wa-fields-setting">
+            <span>Configurações</span>
+            <form [formGroup]="formSettings">
+                <div>
+                    <label>Nome</label>
+                    <input type="text" autocomplete="off" name="configName" formControlName="configName" placeholder="Digite um nome para o bot">
+                </div>
+
+                <div>
+                    <label>Número</label>
+                    <gb-drop-down-group
+                        [dataPersonGroup]="allGroups"
+                        dropDownBackGroundFace="#fff"
+                        [showSearchField]="false"
+                        formControlName="numberGroup"
+                    ></gb-drop-down-group>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Right collum -->
+    <div class="wa-col-right col-9">
+        <div class="col-right-header">
+            <span>
+                <i class="icon-Chat_boot"></i>
+            </span>
+            <span>Suporte ADS</span>
+        </div>
+
+        <div class="body-flow">
+            <!-- Marker -->
+            <div [ngClass]="changeTagClassStartFlow ? 'tag-top-flow' : 'tag-top-flow-disabled'">                
+                <span><i class="icon-Chat_boot"></i>Início do fluxo</span>
+            </div>
+
+            <!-- Message -->
+            <div [@fadeInOut] *ngIf="triggerMessage" class="message-flow">
+                <div class="message-body-flow">
+                    <span class="line-flow"></span>
+                    <div class="message">
+                        <div>
+                            <span>Mensagem de texto</span>
+                            <span>
+                                <i class="icon-Edit"></i>
+                                <i class="icon-trash"></i>
+                            </span>
+                        </div>
+                        
+                        <div>
+                            <span>
+                                {{formMessageDirection.controls['messageField'].value}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direction -->
+            <div [@fadeInOut] *ngIf="triggerDirection" class="direction-flow-main">
+
+                <div class="direction-line-and-circle">
+                    <span></span>
+                    <span>
+                        <i class="icon-add"></i>
+                    </span>
+                    <span></span>
+                </div>
+
+                <div class="direction-flow">
+                    <div>
+                        <div>
+                            <div class="direction-message-error">
+                                <div>
+                                    <span>Direcionamento - Erro</span>            
+                                </div>
+                                
+                                <div>
+                                    <span>
+                                        Opção não encontrada, favor selecionar uma das opções abaixo:
+                                        <br> 
+                                        Inserir equipes como opção
+                                    </span>
+                                </div>                            
+                            </div>
+                            <div class="arrow-to-rigth">
+                                <span></span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="middle-flow">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div>
+                        <div class="direction-message">
+                            <div>
+                                <span>Direcionamento</span>
+                                <span>
+                                    <i class="icon-Edit"></i>
+                                    <i class="icon-trash" (click)="removeDirection()"></i>
+                                </span>
+                            </div>
+                            
+                            <div>
+                                <span>
+                                    Mensagem de direcionamento
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="line-between-direction-message-success">
+                            <span></span>                            
+                        </div>
+
+                        <div class="direction-message-success">
+                            <div>
+                                <span>Direcionamento - sucesso</span>                                
+                            </div>
+                            
+                            <div>
+                                <span>
+                                    Mensagem de direcionamento
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="line-between-direction-message-endflow">
+                            <span></span> 
+                            <span><i class="icon-Chat_boot"></i> Final do fluxo</span>                           
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+                
+            </div>
+
+            <!-- Select -->
+            <div class="select-stage" [@fadeInOut] *ngIf="triggerSelect">
+                <div class="select-stage-line-circle">
+                    <span></span>
+                    <span>
+                        <i class="icon-add"></i>
+                    </span>
+                </div>
+                <div>
+                    <form [formGroup]="formSelectStage">
+                        <gb-drop-down-group
+                            [showIconInList]="false"
+                            [showSearchField]="false"
+                            dropDownBackGroundFace="#fff"
+                            labelField="Selecionar etapa"
+                            [dataPersonGroup]="listStage"
+                            formControlName="selectStage"  
+                        ></gb-drop-down-group>
+                    </form>
+                </div>                
+            </div>
+
+
+        </div>
+
+        <div class="wa-buttons" *ngIf="false">
+            <button><i class="icon-close"></i> Cancelar</button>
+            <button><i class="icon-check"></i> Salva</button>
+        </div>
+        
+    </div>
+</div>

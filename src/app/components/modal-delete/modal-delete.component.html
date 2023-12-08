@@ -1,0 +1,14 @@
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header" ngbAutofocus>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body d-flex justify-content-center align-items-center flex-column py-0">
+    <i class="icon-trash"></i>
+		<h4> {{ typeExclusion }}</h4>
+    <p> {{ messageExclusion }}</p>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark delete" (click)="emitterDelete()"><i class="icon-trash"></i> Excluir</button>
+    <button type="button" class="btn btn-outline-dark margin-left-16px" (click)="c('Save click')"><i class="icon-close"></i> Cancelar</button>
+	</div>
+</ng-template>

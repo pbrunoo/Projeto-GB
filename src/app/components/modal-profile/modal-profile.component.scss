@@ -1,0 +1,199 @@
+@import "../../../assets/scss/index.scss";
+
+.modal-header {
+    font-family: $font-family-regular;
+    color: $color-primary-gry-400;
+    border-bottom: none;
+
+  .dark-modal .modal-content {
+    background-color: #292b2c;
+    color: white;
+  }
+  .dark-modal .close {
+    color: white;
+  }
+  .light-blue-backdrop {
+    background-color: #5cb3fd;
+  }
+
+  i {
+    background-color: $color-primary-blue-100;
+    color: $color-primary-blue-200;
+    padding: $v-small-8px;
+    border-radius: $v-medium-48px;
+
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  span {
+    font-weight: 400;
+    font-size: .75rem;
+    margin-left: $v-small-16px;
+  }
+  button {
+    margin-right: $v-small-16px;
+  }
+
+}
+
+.modal-body {
+  font-family: $font-family-light;
+  padding: 0 $v-medium-32px;
+  color: $color-primary-gry-400;
+
+  label {
+    margin-bottom: $v-small-4px;
+  }
+
+  input[type=text], input[type=password] {
+    height: 2.75rem;
+    border-radius: 8px !important;
+  }
+
+  .opera input[type="password"],
+  .webkit input[type="password"]
+  {
+    height: 2.75rem;
+    border-radius: 8px !important;
+  }
+
+  input:focus {
+    box-shadow: $shadow-small;
+    border: 0.5px solid $color-primary-blue-200;
+  }
+
+  input:-ms-input-placeholder  {
+    font-size:0.875rem;
+    font-family: $font-family-light;
+    font-style: italic;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size:0.875rem;
+    font-family: $font-family-light;
+    font-style: italic;
+  }
+
+  input:-moz-placeholder {
+    font-size:0.875rem;
+    font-family: $font-family-light;
+    font-style: italic;
+  }
+
+/* firefox 19+ */
+  input::-moz-placeholder {
+    font-size:0.875rem;
+    font-family: $font-family-light;
+    font-style: italic;
+  }
+}
+
+.modal-footer {
+  font-family: $font-family-light;
+  border-top: none;
+  padding: 28px;
+
+  button {
+    background-color: $color-primary-gry-0;
+    border: 1px solid $color-primary-gry-300;
+    font-size: .875rem;
+    font-weight: 400;
+    font-family: $font-family-light;
+    color: $color-primary-gry-300;
+
+  }
+
+  button:disabled {
+    background-color: $color-primary-gry-100;
+    border: 1px solid $color-primary-gry-200;
+    font-size: .875rem;
+    font-weight: 400;
+    font-family: $font-family-light;
+    color: $color-primary-gry-200;
+
+  }
+
+  .button-active {
+    background-color: $color-primary-blue-200;
+    border: none;
+    font-size: .875rem;
+    font-weight: 400;
+    font-family: $font-family-light;
+    color: $color-primary-gry-0;
+  }
+}
+
+.margin-top-20px {
+  margin-top: $v-medium-20px;
+}
+
+.margin-bottom-20px {
+  margin-bottom: $v-medium-20px !important;
+}
+
+.eyes-icon {
+  cursor: pointer;
+  position: absolute;
+  right: .7rem;
+  top: .75rem;
+  font-size: 1.2rem;
+  z-index: 100;
+}
+
+.greenEye {
+  color: $color-primary-green-200;
+}
+
+.grayEye {
+  color: $color-primary-gry-300;
+}
+
+.border-bottom {
+  width: 100%;
+  padding-bottom: 20px;
+  border-radius: 0;
+  border-bottom: 1px solid   $color-primary-gry-100 !important;
+}
+
+.checked {
+  height: 18px;
+  width: 18px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.red {
+  span {
+    font-size: 12px !important;
+    font-family: $font-family-light !important;
+    color: $color-primary-red-200 !important;
+  }
+
+  i {
+    font-size: 14px !important;
+    color: $color-primary-red-200 !important;
+  }
+}
+
+.green {
+  span {
+    font-size: 12px !important;
+    font-family: $font-family-light !important;
+    color: $color-primary-green-200 !important;
+  }
+
+  i{
+    font-size: 14px !important;
+    color: $color-primary-green-200 !important;
+  }
+}
+
+.padding-left-zero {
+  padding-left: 0;
+}

@@ -1,0 +1,20 @@
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header" ngbAutofocus>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div [ngClass]="modalType === 'confirm' ? 'modal-body' : 'modal-body-delete'" class="modal-body d-flex justify-content-center align-items-center flex-column py-0">
+    <i [ngClass]="modalType === 'confirm' ? 'icon-check' : 'icon-trash'"></i>
+		<h4> {{ typeModalTitle }}</h4>
+    <p> {{ messageModalBody }}</p>
+	</div>
+
+	<div *ngIf="modalType === 'confirm'" class="modal-footer d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark" (click)="c('Save click')"><i class="icon-close"></i> Cancelar</button>
+		<button type="button" class="btn btn-outline-dark save margin-l-16" (click)="salvar('Save click')"><i class="icon-check"></i> Salvar</button>
+	</div>
+
+	<div *ngIf="modalType === 'delete-ticket' || modalType === 'delete-tag'" class="modal-footer-delete d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark delete" (click)="emitterDelete()"><i class="icon-trash"></i> Excluir</button>
+    	<button type="button" class="btn btn-outline-dark margin-left-16px" (click)="c('Save click')"><i class="icon-close"></i> Cancelar</button>
+	</div>
+</ng-template>

@@ -1,0 +1,127 @@
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header" ngbAutofocus>
+		<div class="he-main">
+			<div class="he-1">
+				<span><i class="icon-add add"></i></span>
+				<span>Adicionar campanha</span>
+			</div>
+			<div class="he-2">
+				<span>*Campos obrigatórios</span>
+				<span><button type="button" class="btn-close" aria-label="Close"
+						(click)="closeModal()"></button></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-body d-flex justify-content-center align-items-center flex-column py-0">
+
+		<div class="main-top">
+			<form [formGroup]="scheduleMessageForm">
+				<div class="main">
+					<!-- COLUNA ESQUERDA -->
+					<div class="colum-left">
+						<div class="titulo">
+							<label for="titulo" class="form-label">Titulo *</label>
+							<div class="input-group mb-3">
+								<input type="text" [ngClass]="!scheduleMessageForm.controls['titulo'].valid && scheduleMessageForm.controls['titulo'].touched ? 'input-error' : ''" formControlName="titulo" name="titulo" class="form-control" id="titulo" aria-describedby="basic-addon3" placeholder="Digite um título para o bot">
+							</div>
+							<span class="error-field margin-top-err" *ngIf="!scheduleMessageForm.controls['titulo'].valid && scheduleMessageForm.controls['titulo'].touched">Informe o título.</span>
+						</div>
+
+						<div class="data-agendamento">
+							<label for="data_agendamento" class="form-label">Data e hora envio *</label>
+							<div class="input-group mb-3">
+								<input type="text" [ngClass]="!scheduleMessageForm.controls['dataAgendamento'].valid && scheduleMessageForm.controls['dataAgendamento'].touched ? 'input-error' : ''" [footerTemplate]="footerTemplate" (dateSelect)="onDateSelected()" [firstDayOfWeek]="7" navigation="arrows" name="dataAgendamento" ngbDatepicker #dp="ngbDatepicker" formControlName="dataAgendamento" appMaskInput maxlength="10" [appMaskValue]="scheduleMessageForm.controls['dataAgendamento'].value" id="dataAgendamento" class="form-control settings-input" placeholder="dd/mm/aaaa" aria-label="dd/mm/aaaa" aria-describedby="basic-addon2">
+								<input type="text" value="{{scheduleMessageForm.controls['timeToDateAgendamento'].value}}" [ngClass]="!scheduleMessageForm.controls['dataAgendamento'].valid && scheduleMessageForm.controls['dataAgendamento'].touched ? 'input-error' : ''" formControlName="tempoAgendamento" name="tempoAgendamento" id="tempoAgendamento" class="form-control settings-input-2" placeholder="hh:mm" aria-label="hh:mm" mask="00:00" maxlength="5" aria-describedby="basic-addon3">
+								<span class="input-group-text" (click)="dp.toggle()"><i class="icon-calendar"></i></span>
+								<span *ngIf="!scheduleMessageForm.controls['dataAgendamento'].valid && scheduleMessageForm.controls['dataAgendamento'].touched" class="error-field">Selecione o tempo para continuar.</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- COLUNA DIREITA -->
+					<div class="colum-right">
+						<div class="contato">
+							<div>
+								<label for="contato" class="form-label">Contato *</label>
+								<div><gb-drop-down-group formControlName="contacts" labelField="Selecione um contato"  titleIcon="user" listIcon="user" [dataPersonGroup]="contactsList"></gb-drop-down-group></div>
+								<span *ngIf="!scheduleMessageForm.controls['contacts'].valid && scheduleMessageForm.controls['contacts'].touched" class="error-field">Selecione o contato.</span>
+							</div>
+						</div>
+
+						<div class="agendamento-repetir">
+							<label for="dataAgendamentoRepetir" class="form-label">Data e hora envio *</label>
+
+							<!-- <div class="input-group mb-3">
+								<input type="text" formControlName="dataAgendamentoRepetir" id="dataAgendamentoRepetir" name="dataAgendamentoRepetir" class="form-control input-height settings-input" placeholder="xx/xx/xxxx xx:xx" aria-label="xx/xx/xxxx xx:xx" aria-describedby="basic-addon2">
+								<span class="input-group-text" id="dataAgendamentoRepetir"><i class="icon-calendar"></i></span>
+							</div> -->
+
+							<div class="input-group mb-3">
+								<input type="text" [ngClass]="!scheduleMessageForm.controls['dataAgendamentoRepetir'].valid && scheduleMessageForm.controls['dataAgendamentoRepetir'].touched ? 'input-error' : ''" [disabled]="!scheduleMessageForm.controls['repetirEnvio'].value" [footerTemplate]="footerTemplate2" (dateSelect)="onDateSelected2()" [firstDayOfWeek]="7" navigation="arrows" name="dataAgendamentoRepetir" ngbDatepicker #dp2="ngbDatepicker" formControlName="dataAgendamentoRepetir" appMaskInput maxlength="10" [appMaskValue]="scheduleMessageForm.controls['dataAgendamentoRepetir'].value" id="dataAgendamentoRepetir" class="form-control settings-input" placeholder="dd/mm/aaaa" aria-label="dd/mm/aaaa" aria-describedby="basic-addon2">
+								<input type="text" value="{{scheduleMessageForm.controls['tempoAgendamentoRepetir'].value}}" [ngClass]="!scheduleMessageForm.controls['dataAgendamentoRepetir'].valid && scheduleMessageForm.controls['dataAgendamentoRepetir'].touched ? 'input-error' : ''" [attr.disabled]="!scheduleMessageForm.controls['repetirEnvio'].value? true : null" [disabled]="true" formControlName="tempoAgendamentoRepetir" name="tempoAgendamentoRepetir" id="tempoAgendamentoRepetir" class="form-control input-height settings-input-2" placeholder="hh:mm" mask="00:00" maxlength="5" aria-label="hh:mm">
+								<span class="input-group-text" (click)="dp2.toggle()"><i class="icon-calendar"></i></span>
+								<span *ngIf="!scheduleMessageForm.controls['dataAgendamentoRepetir'].valid && scheduleMessageForm.controls['dataAgendamentoRepetir'].touched" class="error-field">Selecione o tempo para continuar.</span>
+							</div>
+
+
+							<div class="form-check">
+								<input class="form-check-input" (change)="setValidatorInField(scheduleMessageForm.controls['repetirEnvio'].value)" formControlName="repetirEnvio" type="checkbox" value="" id="repetirEnvio" name="repetirEnvio">
+								<label class="form-check-label" for="repeat-send">
+								Repetir envio?
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="main-footer">
+					<div>
+						<hr>
+					</div>
+
+					<div class="setting-sw">
+						<div class="form-check form-switch setting-config">
+							<input class="form-check-input" (change)="enableTemplateMessageField(scheduleMessageForm.controls['checkUseMessageTemplate'].value)" formControlName="checkUseMessageTemplate" type="checkbox" id="useMessenger">
+							<label class="form-check-label" for="useMessenger">Utilizar modelo de mensagem</label>
+						</div>
+					</div>
+
+					<div class="template-messenger" *ngIf="scheduleMessageForm.controls['checkUseMessageTemplate'].value">
+						<div [ngClass]="verifyEnableTemplateMessage ? 'enableFieldTemplate' : 'disabledFieldTemplate'">
+							<label for="contato" class="form-label">Modelo mensagem *</label>
+							<gb-drop-down-group formControlName="messageTemplate" labelField="Selecione um modelo de mensagem" [dataPersonGroup]="messagesTemplate"></gb-drop-down-group>
+							<span *ngIf="!scheduleMessageForm.controls['messageTemplate'].valid && scheduleMessageForm.controls['messageTemplate'].touched" class="error-field">Selecione o modelo.</span>
+						</div>
+					</div>
+
+					<div class="text-messenger" *ngIf="!scheduleMessageForm.controls['checkUseMessageTemplate'].value">
+						<div>
+							<label for="contato" class="form-label">Mensagem *</label>
+							<textarea formControlName="textMessage" cols="30" rows="10"></textarea>
+							<span *ngIf="!scheduleMessageForm.controls['textMessage'].valid && scheduleMessageForm.controls['textMessage'].touched" class="error-field">Informe o texto da mensagem.</span>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="modal-footer d-flex">
+		<button type="button" class="btn btn-light" (click)="c('Save click')"><i class="icon-close" icon-SignOut
+				icon></i> Cancelar</button>
+		<button type="button" [disabled]="!scheduleMessageForm.valid" class="btn btn-light button-add" [ngClass]="!scheduleMessageForm.valid ? 'disabled' : ''" (click)="saveData()"><i
+				class="icon-check"></i> {{saving ? 'Adicionando...' : 'Adicionar'}}</button>
+	</div>
+	<form [formGroup]="scheduleMessageForm">
+		<ng-template #footerTemplate>
+			<div><ngb-timepicker [(ngModel)]="timeToDateAgendamento" formControlName="timeToDateAgendamento"></ngb-timepicker></div>
+		</ng-template>
+
+
+		<ng-template #footerTemplate2>
+			<div><ngb-timepicker [(ngModel)]="timeToDateAgendamentoRepetir" formControlName="timeToDateAgendamentoRepetir"></ngb-timepicker></div>
+		</ng-template>
+	</form>
+</ng-template>
+

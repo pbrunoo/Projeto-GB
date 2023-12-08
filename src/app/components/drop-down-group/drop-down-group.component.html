@@ -1,0 +1,30 @@
+<div class="main" [ngClass]="controlDisable ? 'disabledField' : ''" (gbOutsideClick)="verifyOutSideClick($event)">
+    <div class="input-search" [ngClass]="controlDisable ? 'disabledField-addColor' : ''" (click)="openCloseDropDown()" [attr.aria-expanded]="!isCollapsed">
+        <div class="input-search-name"><span class="titleName" *ngIf="!selectNamePerson().selected;else otheTilte">{{selectNamePerson().title}}</span><ng-template #otheTilte><i [ngClass]="titleIcon !== '' && titleIcon === 'user' ? 'icon-people' : titleIcon !== '' && titleIcon === 'contact' ? 'icon-building' : titleIcon !== '' && titleIcon === 'link' ? 'icon-link' : '' " ></i><span class="titleNameSelected">{{selectNamePerson().title}}</span></ng-template></div>
+        <div><i class="color-icon" [ngClass]="isCollapsed ? 'icon-down ' : 'icon-Up'"></i></div>
+    </div>
+
+    <div class="body-search" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div *ngIf="searchField">
+            <div class="input-search-2">
+                <div>
+                    <i class="icon-search color-icon"></i>
+                </div>
+                <div>
+                    <input placeholder="Consultar..." [(ngModel)]="searchTerm" class="input-element" type="text">
+                </div>
+            </div>
+            <hr class="divider-hr">
+        </div>
+
+        <div (click)="selectOptions(i)" *ngFor="let person of dataPersonGroupArrive | filterListPerson: searchTerm; index as i">
+            <div class="results-search">
+                <div class="icon-result-search"><i [ngClass]="listIcon !== '' && listIcon === 'user' ? 'icon-people' : listIcon !== '' && listIcon === 'contact' ? 'icon-building' : titleIcon !== '' && titleIcon === 'link' ? 'icon-link' : ''  " ></i></div>
+                <div class="data-result-search">
+                    <span class="title-person">{{person.name}}</span>
+                    <!-- <span class="data-person">08.333.333/000-58 - email@email.com</span> -->
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>

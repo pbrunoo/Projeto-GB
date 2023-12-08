@@ -1,0 +1,54 @@
+@import "../../../assets/scss/index.scss";
+
+.side-menu{
+    background-color: $color-primary-blue-200;
+    height: 100vh !important;
+
+    a{
+        margin: 5px;
+    }
+
+    a:first-child{
+        align-self: center;
+    }
+
+    .nav-link:hover{
+        background: $color-primary-blue-300 !important;
+        //margin: 5px;
+    }
+
+    .nav-link:active{
+        background: $color-primary-blue-300 !important;
+        //margin: 5px;
+    }
+
+    .active{
+        background: $color-primary-blue-300;
+        margin: 5px;
+    }
+
+    .configuration{
+      margin-top: 9rem;
+    }
+
+    i {
+      color: $color-primary-gry-0;
+      font-size: 30px;
+    }
+}
+
+.set-menu{
+    height: -webkit-fill-available;
+}
+
+@media screen and (min-width: 1920px){
+	.configuration{
+    margin-top: 19rem !important;
+  }
+}
+
+@media screen and (max-width: 1366px){
+	.configuration{
+    margin-top: 1rem !important;
+  }
+}

@@ -1,0 +1,189 @@
+<div class="row main-page">
+
+    <div class="header">
+        <div><span>Dashboard</span></div>
+        <div>
+            <gb-drop-down-period-date (selectedData)="filterDateChart2($event)"></gb-drop-down-period-date>
+        </div>
+    </div>
+
+    <div class="chart-area">
+        <div class="chart-1">
+
+            <div class="chart-header">
+                <span><i class="icon-Whatsapp"></i> Fila atendimento</span>
+                <div>
+                    <gb-drop-down-team
+                        [listData]="teamsChart1"
+                        (selectedItem)="selectedTeam($event)"
+                    ></gb-drop-down-team>
+                </div>
+            </div>
+
+            <div class="chart-card-top">
+                <div class="card-blue">
+                    <span>0</span>
+                    <span>Atendendo</span>
+                </div>
+                <div class="card-yellow">
+                    <span>0</span>
+                    <span>Aguardando</span>
+                </div>
+                <div class="card-green">
+                    <span>0</span>
+                    <span>Encerrados</span>
+                </div>
+                <div class="card-gray">
+                    <span>0</span>
+                    <span>Total</span>
+                </div>
+            </div>
+
+            <div><hr></div>
+
+            <div class="chart-header-2">
+                <span><i class="icon-Whatsapp"></i> Volume de conversas via WhatsApp</span>
+                <span>Por dia <i class="icon-down"></i> </span>
+            </div>
+
+            <div class="chart">
+                <canvas #chartA baseChart class="chart"
+                    [data]="lineChartDataA"
+                    [options]="lineChartOptionsA"
+                    [type]="lineChartTypeA"
+                    (chartClick)="chartClickedA($event)">
+                </canvas>
+                <span>Atualizado a cada 10 minutos</span>
+            </div>
+
+            <div class="chart-card-footer">
+                <div>
+                    <span>00:00:00</span>
+                    <span>Primeira resposta</span>
+                </div>
+                <div>
+                    <span>00:00:00</span>
+                    <span>Tempo médio para respostas</span>
+                </div>
+                <div>
+                    <span>00:00:00</span>
+                    <span>Tempo médio aguardando</span>
+                </div>
+                <div>
+                    <span>00:00:00</span>
+                    <span>Tempo médio para solução</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="chart-2">
+
+            <div class="chart-header">
+                <span><i class="icon-ticket"></i> Tickets atendimento</span>
+                <div>
+                    <gb-drop-down-team
+                        [listData]="teamsChart2"
+                        (selectedItem)="selectedTeamChart2($event)"
+                    ></gb-drop-down-team>
+                </div>
+            </div>
+
+            <div class="chart-card-top">
+                <div class="card-blue">
+                    <span>{{attendaceData?.opened}}</span>
+                    <span>Abertos</span>
+                </div>
+                <div class="card-yellow">
+                    <span>{{attendaceData?.pending}}</span>
+                    <span>Pendentes</span>
+                </div>
+                <div class="card-green">
+                    <span>{{attendaceData?.resolved}}</span>
+                    <span>Resolvidos</span>
+                </div>
+                <div class="card-gray">
+                    <span>{{attendaceData?.all}}</span>
+                    <span>Total</span>
+                </div>
+            </div>
+
+            <div><hr></div>
+
+            <div class="chart-header-2">
+                <span><i class="icon-Whatsapp"></i> Volume de tickets</span>
+                <span>Por dia <i class="icon-down"></i> </span>
+            </div>
+
+            <div class="chart">
+                <canvas #chartB baseChart class="chart"
+                    [data]="lineChartDataB"
+                    [options]="lineChartOptionsB"
+                    [type]="lineChartTypeB"
+                    (chartClick)="chartClickedB($event)">
+                </canvas>            
+                <span>Atualizado a cada 10 minutos</span>
+            </div>
+
+            <div class="chart-card-footer">
+                <div>
+                    <span>{{averageTime?.timeAll}}</span>
+                    <span>Tempo médio pendente Tickets</span>
+                </div>
+                <div>
+                    <span>{{averageTime?.timeResolved}}</span>
+                    <span>Tempo médio de resolução Tickets</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ranking-area" *ngIf="(levelUser | async) === 1">        
+
+        <div class="data-area">
+            <div class="ranking-header">
+                <span><i class="icon-Users"></i> Volume de conversas via WhatsApp</span>
+                <div>
+                    <gb-drop-down-team
+                        [listData]="teams"
+                        (selectedItem)="selectedTeamToList($event)"
+                    ></gb-drop-down-team>
+                </div>
+                
+            </div>
+
+            <div class="table-data table-responsive">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Agente</th>
+                        <th>Equipe</th>
+                        <th>Primeira resposta WhatsApp</th>
+                        <th>Tempo de resposta WhatsApp</th>
+                        <th>Tempo de solução WhatsApp</th>
+                        <th>Ticket atribuído</th>
+                        <th>Ticket resolvido</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of listUserTicket; index as i">
+                        <td> <img src="../../../assets/images/user_image.png" alt=""> {{user.user}}</td>
+                        <td><span>{{user.team}}</span></td>
+                        <td><div><span> 00:00:00</span></div></td>
+                        <td><div><span> 00:00:00</span></div></td>
+                        <td><div><span> 00:00:00</span></div></td>
+                        <td><div><span> {{user.tasks}}</span></div></td>
+                        <td><div><span> {{user.tasks_resolved}}</span></div></td>
+                      </tr>                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+
+</div>

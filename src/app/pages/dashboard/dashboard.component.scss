@@ -1,0 +1,489 @@
+@import "../../../assets/scss/index.scss";
+
+.main-page{
+    background-color: #F7F7FC;
+}
+.header{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+
+    div:first-child{
+        width: 100%;
+        font-size: 20px;
+        font-family: $font-family-semi-bold;
+        color: $color-primary-gry-400;
+
+        span{
+            display: flex;
+        }
+
+        span::after{    
+            display: flex;        
+
+            content: "";
+            flex: 1 1;
+            border-bottom: 1px solid $color-primary-gry-400;
+            margin: auto;
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+    }
+
+    div:nth-child(2){
+        width: 268px;
+    }
+}
+
+.chart-area {
+    justify-content: space-between;
+    display: flex;
+    margin-top: 24px;
+    gap: 15px;
+    
+
+    .chart-1{
+        min-width: 622px;
+        width: 100%;
+        height: 656px;
+        background: #FFFFFF;
+        border-radius: 8px;
+        padding: 20px;
+
+        .chart-header{
+            display: flex;
+            justify-content: space-between;
+            font-family: $font-family-regular;
+
+            div{
+                width: 197px;
+                position: relative;
+            }
+
+            span{
+                display: flex;
+                align-items: center;
+            }
+
+            span:first-child{
+                font-size: 16px;
+                font-family: $font-family-semi-bold;
+                color: $color-primary-green-200;
+                i {
+                    margin-right: 7px;
+                    font-size: 20px;
+                }
+            }
+
+            span:nth-child(2){
+                color: $color-primary-gry-300;
+                font-size: 14px;
+                i{
+                    margin-left: 7px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $color-primary-gry-300;
+                }
+            }
+        }
+
+        .chart-card-top{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+
+            div{
+                width: 131px;
+                height: 96px;
+                border-radius: 16px;
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                span:first-child{
+                    font-size: 28px;
+                    font-family: $font-family-extra-bold;
+                }
+
+                span:nth-child(2){
+                    font-size: 16px;
+                    font-family: $font-family-semi-bold;
+                }
+            }
+
+            .card-blue{
+                border: 1px solid $color-primary-blue-200;
+
+                span{
+                    color: $color-primary-blue-200;
+                }
+            }
+
+            .card-yellow{
+                border: 1px solid $color-primary-yellow-200;
+
+                span{
+                    color: $color-primary-yellow-200;
+                }
+            }
+
+
+            .card-green{
+                border: 1px solid $color-primary-green-200;
+
+                span{
+                    color: $color-primary-green-200;
+                }
+            }
+
+            .card-gray{
+                border: 1px solid #777986;
+                
+                span{
+                    color: $color-primary-gry-300;
+                }
+            }
+        }
+
+        .chart-header-2{
+            display: flex;
+            justify-content: space-between;
+            font-family: $font-family-regular;
+
+            span{
+                display: flex;
+                align-items: center;
+            }
+
+            span:first-child{
+                font-size: 16px;
+                font-family: $font-family-semi-bold;
+                color: $color-primary-green-200;
+                i {
+                    margin-right: 7px;
+                    font-size: 20px;
+                }
+            }
+
+            span:nth-child(2){
+                color: $color-primary-gry-300;
+                font-size: 14px;
+                i{
+                    margin-left: 7px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $color-primary-gry-300;
+                }
+            }
+        }
+
+        .chart{
+            span{
+                font-size: 12px;
+                font-family: $font-family-regular;
+                color: $color-primary-gry-300;
+            }
+        }
+
+        .chart-card-footer{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+
+            div{
+                width: 131px;
+                height: 96px;
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #BDBFC6;
+                border-radius: 8px;
+
+                span:first-child{
+                    font-size: 20px;
+                    font-family: $font-family-semi-bold;
+                    color: $color-primary-green-200;
+                }
+
+                span:nth-child(2){
+                    font-size: 12px;
+                    font-family: $font-family-semi-bold;
+                    color: $color-primary-gry-300;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .chart-2{
+        min-width: 622px;
+        width: 100%;
+        height: 656px;
+        background: #FFFFFF;
+        border-radius: 8px;
+        padding: 20px;
+
+        .chart-header{
+            display: flex;
+            justify-content: space-between;
+            font-family: $font-family-regular;
+
+            div{
+                width: 197px;
+                position: relative;
+            }
+
+            span{
+                display: flex;
+                align-items: center;
+            }
+
+            span:first-child{
+                font-size: 16px;
+                font-family: $font-family-semi-bold;
+                color: $color-primary-blue-200;
+                i {
+                    margin-right: 7px;
+                    font-size: 20px;
+                }
+            }
+
+            span:nth-child(2){
+                color: $color-primary-gry-300;
+                font-size: 14px;
+                i{
+                    margin-left: 7px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $color-primary-gry-300;
+                }
+            }
+        }
+
+        .chart-card-top{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+
+            div{
+                width: 131px;
+                height: 96px;
+                border-radius: 16px;
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                span:first-child{
+                    font-size: 28px;
+                    font-family: $font-family-extra-bold;
+                }
+
+                span:nth-child(2){
+                    font-size: 16px;
+                    font-family: $font-family-semi-bold;
+                }
+            }
+
+            .card-blue{
+                border: 1px solid $color-primary-blue-200;
+
+                span{
+                    color: $color-primary-blue-200;
+                }
+            }
+
+            .card-yellow{
+                border: 1px solid $color-primary-yellow-200;
+
+                span{
+                    color: $color-primary-yellow-200;
+                }
+            }
+
+
+            .card-green{
+                border: 1px solid $color-primary-green-200;
+
+                span{
+                    color: $color-primary-green-200;
+                }
+            }
+
+            .card-gray{
+                border: 1px solid #777986;
+                
+                span{
+                    color: $color-primary-gry-300;
+                }
+            }
+        }
+
+        .chart-header-2{
+            display: flex;
+            justify-content: space-between;
+            font-family: $font-family-regular;
+
+            span{
+                display: flex;
+                align-items: center;
+            }
+
+            span:first-child{
+                font-size: 16px;
+                font-family: $font-family-semi-bold;
+                color: $color-primary-blue-200;
+                i {
+                    margin-right: 7px;
+                    font-size: 20px;
+                }
+            }
+
+            span:nth-child(2){
+                color: $color-primary-gry-300;
+                font-size: 14px;
+                i{
+                    margin-left: 7px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $color-primary-gry-300;
+                }
+            }
+        }
+
+        .chart{
+            span{
+                font-size: 12px;
+                font-family: $font-family-regular;
+                color: $color-primary-gry-300;
+            }
+        }
+
+        .chart-card-footer{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+
+            div{
+                width: 277px;
+                height: 96px;
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid $color-primary-gry-200;
+                border-radius: 8px;
+
+                span:first-child{
+                    font-size: 20px;
+                    font-family: $font-family-semi-bold;
+                    color: $color-primary-blue-200;
+                }
+
+                span:nth-child(2){
+                    font-size: 12px;
+                    font-family: $font-family-semi-bold;
+                    color: $color-primary-gry-300;
+                }
+            }
+        }
+    }
+}
+
+.ranking-area{
+    margin-top: 16px;
+
+    .data-area{
+        min-height: 596px;
+        background: #FFFFFF;
+        border-radius: 8px;
+        padding: 20px;
+
+        .ranking-header{
+            display: flex;
+            justify-content: space-between;
+            font-family: $font-family-regular;
+
+            div{
+                width: 197px;
+                position: relative;
+            }
+    
+            span{
+                display: flex;
+                align-items: center;
+            }
+    
+            span:first-child{
+                font-size: 16px;
+                font-family: $font-family-semi-bold;
+                color: $color-primary-green-200;
+                i {
+                    margin-right: 7px;
+                    font-size: 20px;
+                }
+            }
+    
+            span:nth-child(2){
+                color: $color-primary-gry-300;
+                font-size: 14px;
+                i{
+                    margin-left: 7px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $color-primary-gry-300;
+                }
+            }
+        }
+
+        .table-data{
+            margin-top: 20px;
+
+            .table{
+                thead{
+                    tr{
+                        text-align: center;
+                        vertical-align: middle;
+                        
+                        th{
+                            font-weight: 100;
+                            font-family: $font-family-semi-bold;
+                            color: $color-primary-gry-300;
+                        }
+
+                        th:first-child{
+                            width: 20%;
+                            text-align: initial;
+                        }
+                        
+                        th:nth-child(2){
+                            width: 10%;
+                        }
+                    }
+                }
+
+                tbody{
+                    tr{
+                        text-align: center;
+                        vertical-align: middle; 
+                        font-size: 14px;
+                        color: $color-primary-gry-300;  
+                        
+                        td:first-child{
+                            width: 20%;
+                            text-align: initial;
+                        }
+                    }
+
+                    
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,186 @@
+<gb-global-modal (actionData)="deleteTicket($event)"></gb-global-modal>
+<div class="row setting-adjusts">
+    <div class="col-2">
+        <div class="title-colum">
+            <span>
+                Tickets
+            </span>
+        </div>
+        <div>
+            <ul class="list-unstyled list-ticket">
+                <li (click)="filterListStatus(items.title, i)" *ngFor="let items of sumStatusItens(ticketDetailBkup); index as i" [ngClass]="items.selected ? 'selected-filter' : ''" class="d-flex justify-content-between">
+                    <span>{{items.title}}</span><span>{{items.qtyItem}}</span>
+                </li>                
+            </ul>
+        </div>
+        <div>
+            <button class="new-ticket" type="button" (click)="newTicket()"><i class="icon-ticket"></i> Novo Ticket</button>
+        </div>
+    </div>
+    <div class="col-10 col-height">
+        <div class="loading" *ngIf="loading"><gb-loader></gb-loader></div>
+        <div *ngIf="ticketDetail.length > 0"> 
+            <!-- Top -->           
+            <div class="top-main">
+                <div><span class="title-ticket span-01">Todos os tickets </span>
+                <div class="input-field-icon"><i class="icon-search"></i><input  placeholder="Buscar por assunto" [(ngModel)]="searchTerms" type="text"></div>
+                </div>
+                <div><button type="button" (click)="closeWithOutChangeLisFilter()" class="filter-btn"><i class="icon-filter"></i>Filtros</button></div>
+            </div>
+
+            <!-- Body -->
+            <div class="main-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Nº</th>
+                            <th>Solicitante</th>
+                            <th>Responsável</th>
+                            <th>Assunto</th>
+                            <th>Categoria</th>
+                            <th>Data criação</th>
+                            <th>Prioridade</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let ticket of ticketDetail | filterListTicket: searchTerms || filterToList; index as i ">
+                            <td><span class="{{getStatusClass(ticket.status)}}">{{getStatusName(ticket.status)}}</span></td>
+                            <td><span>{{ticket.id}} </span></td>
+                            <td>
+                                <div>
+                                    <span class="span-01" *ngFor="let contact of ticket.contacts">
+                                        {{contact.name}}
+                                    </span>   
+                                </div>                            
+                            </td>
+                            <td>
+                                <span *ngFor="let user of ticket.user">
+                                    {{user.name}}
+                                </span>
+                            </td>
+                            <td>{{ticket.subject}}</td>
+                            <td>{{ticket.category}}</td>
+                            <td>{{formatDate(ticket.createdAt)}}</td>
+                            <td><div class="actions"><span class="{{getPriorityClass(ticket.priority)}}">{{getPriorityName(ticket.priority)}}</span> <i class="icon-Edit" (click)="editTicket(ticket.id)"></i><i class="icon-trash" (click)="deleteTicketModal(i, ticket.id)"></i></div> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+        
+        <div class="caneca" *ngIf="showCup"> 
+             <img class="" src="../../../assets/images/caneca.svg" alt="caneca">
+            <div>
+                <span>Nenhum ticket emitido.</span>
+                <span>Após a primeira emissão, você poderá visualizar aqui.</span>
+                <button (click)="newTicket()" type="button">
+                    <i class="icon-ticket"></i> Novo ticket
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="filter-main" [@fadeInOut] *ngIf="menuFilter">
+    <!-- header -->
+    <div class="filter-header">
+        <span>Filtros</span> <span><i class="icon-close" (click)="closeWithOutChangeLisFilter()"></i></span>
+    </div>
+    
+    <!-- formularios -->
+    <div class="form-styles">
+        <div class="adjust-position">
+            <label>Solicitante</label>
+            <gb-drop-down-search-person
+                [dataPerson]="personData"
+                name="Selecione um ou mais solicitantes."
+                (outDropDownDataPerson)="getSelectedRequester($event)"
+            >
+            </gb-drop-down-search-person>
+            <div class="area-selected">
+                <div class="tag-selected" *ngFor="let data of requester; index as i">
+                    <span><i class="icon-building"></i></span> {{reduceName(data.name)}} <i class="icon-close keep-hand" (click)="removeItem(requester, i)"></i>
+                </div>               
+            </div>
+            
+        </div>
+        <div class="adjust-position">
+            <label>Responsável</label>
+            <gb-drop-down-search-person
+                [dataPerson]="responsavel"
+                name="Selecione um ou mais resposáveis."
+                (outDropDownDataPerson)="getSelectedPersonCharge($event)"
+                nameIcon="icon-people">
+            </gb-drop-down-search-person>
+            <div class="area-selected">
+                <div class="tag-selected" *ngFor="let data of personCharge; index as i">
+                    <span><i class="icon-building"></i></span> {{reduceName(data.name)}} <i class="icon-close keep-hand" (click)="removeItem(personCharge, i)"></i>
+                </div>
+            </div>
+        </div>
+        <div class="adjust-position">
+            <label>Categoria</label>
+        
+            <gb-status-drop-down 
+                (outDropDownData)="getSelectedCategory($event)" 
+                [dataDropDown]="dataCategory" 
+                [contentColor]="2" 
+                [iconBall]="false"
+            ></gb-status-drop-down>
+            <div class="area-selected">
+                <div class="tag-selected" *ngFor="let data of category; index as i">
+                    {{reduceCategoryName(data.option)}} <i class="icon-close keep-hand" (click)="removeItem(category, i)"></i>
+                </div>
+            </div>
+            
+        </div>
+        <div class="adjust-position">
+            <label>Prioridade</label>
+            <gb-status-drop-down 
+                (outDropDownData)="getSelectedPriority($event)" 
+                [dataDropDown]="dataPriority" 
+                [contentColor]="2" 
+                [iconBall]="true"
+            ></gb-status-drop-down>
+
+            <div class="area-selected">
+                <div class="tag-selected" *ngFor="let data of priority; index as i">
+                    <i class="icon-Point" [ngClass]="resolveIconFilter(data.option)"></i> {{reduceCategoryName(data.option)}} <i class="icon-close keep-hand" (click)="removeItem(priority, i)"></i>
+                </div>
+            </div>    
+        </div>
+        <div class="form-period">
+            <div>
+                <label>Período inicial</label>
+                <div class="date-input">
+                    <input type="text" id="dtaInicio" name="dp" [firstDayOfWeek]="7" navigation="arrows"
+                    [(ngModel)]="modelStart"
+                    ngbDatepicker
+                    #d="ngbDatepicker">
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"> <i class="icon-calendar"></i></button>
+                </div>
+                
+            </div>
+            
+            <div>
+                <label>Período final</label>
+                <div class="date-input">
+                    <input type="text" id="dtaFim" name="dp2" [firstDayOfWeek]="7" navigation="arrows"
+                    [(ngModel)]="modelEnd"
+                    ngbDatepicker
+                    #d2="ngbDatepicker">
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button"><i class="icon-calendar"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="form-footer">
+            <button (click)="showMenuFilter()"><i class="icon-close"></i> Cancelar</button>
+            <button (click)="apllyFilter()"> <i class="icon-check"></i>Aplicar</button>
+        </div>
+    </div>
+</div>

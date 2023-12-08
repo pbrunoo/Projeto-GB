@@ -1,0 +1,330 @@
+@import "../../../assets/scss/index.scss";
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-body {
+  font-family: $font-family-regular;
+  color: $color-primary-gry-400;
+
+  i {
+    font-size: 40px;
+    background-color: $color-primary-blue-200 !important;
+    color: $color-primary-gry-0 !important;
+    padding: 1.2rem;
+    border-radius: 5rem;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-family: $font-family-bold;
+    font-size: 30px !important;
+    margin-bottom: 1rem;
+  }
+
+  p{
+    text-align: center;
+  }
+}
+
+.modal-footer {
+  border-top: none;
+
+  button {
+    width: 130px;
+    height: 44px;
+    background-color: $color-primary-gry-0;
+    border: 1px solid $color-primary-gry-300;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-family: $font-family-light;
+    color: $color-primary-gry-300;
+
+  }
+}
+
+.margin-l-16{
+  margin-left: 16px;
+}
+
+.delete {
+  background-color: $color-primary-blue-200 !important;
+  border: none !important;
+  color: $color-primary-gry-0 !important;
+}
+
+.margin-left-16px {
+  margin-left: $h-small-16px;
+}
+
+::ng-deep .ngb-dp-header{
+  background: none !important;
+}
+
+::ng-deep .ngb-dp-month-name{
+  background: none !important;
+}
+
+::ng-deep .ngb-dp-weekday{
+  font-size: 12px !important;
+  font-style: normal !important;
+  color: $color-primary-gry-400 !important;
+}
+
+::ng-deep .ngb-dp-weekdays{
+  background: none !important;
+  border: none !important;
+}
+
+::ng-deep .btn-light{
+  font-size: 12px !important;
+  font-family: $font-family-regular !important;
+}
+
+::ng-deep .ngb-dp-navigation-chevron{
+  color: $color-primary-gry-400 !important;
+}
+
+::ng-deep .dropdown-menu{
+  width: 100% !important;
+}
+
+::ng-deep .ngb-dp-month{
+  width: 100% !important;
+}
+
+::ng-deep .ngb-dp-week{
+  justify-content: space-between !important
+}
+
+::ng-deep .ngb-tp{
+  justify-content: center !important;
+}
+
+::ng-deep .ngb-tp-input-container{
+  width: 40px !important;
+}
+
+::ng-deep .ngb-tp-input{
+  padding: 4px !important;
+}
+
+::ng-deep .ngb-tp-chevron{
+  color: $color-primary-gry-400 !important;
+}
+
+::ng-deep .myCustomModalClass{
+
+  .modal-dialog {
+    max-width: 622px !important;
+  }
+
+} 
+
+
+
+.he-main{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: $font-family-regular;
+}
+
+.he-1{
+  display: flex;
+  align-items: baseline;
+
+  span:first-child{
+    margin-right: 16px;
+    height: 36px;
+    width: 36px;
+    background-color: $color-primary-blue-100;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+    i{
+      color: $color-primary-blue-200;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  span:nth-child(2){
+    font-size: 20px;
+    font-family: $font-family-semi-bold;
+    display: flex;
+  }
+
+  span:nth-child(2)::after{
+    content: "";
+    width: 68px;
+    border-bottom: 1px solid #742a2a;
+    margin-left: 16px;
+    margin-bottom: 13px;
+  }
+}
+
+.he-2{
+  display: flex;
+  align-items: center;
+
+  span:first-child{
+    margin-right: 20px;
+  }
+}
+
+.main{
+  width: 100%;
+  display: flex;
+  gap: 16px;
+
+  .colum-left{
+    width: 100%;
+
+    input{
+      height: 44px;
+    }
+
+    i{
+      font-size: 20px !important;
+      margin-bottom: 0 !important;
+      padding: 0 !important;
+      background: none !important;
+      color: $color-primary-gry-300 !important;
+    }
+
+    /* .titulo{
+      
+    } */
+
+    .data-agendamento{
+      .settings-input{
+        border-right: none !important;
+      }
+
+      .settings-input-2{
+        border-left: none !important;
+      }
+
+      span{
+        background: none;
+      }
+
+      .error-field{
+        font-size: 12px;
+        font-style: italic;
+        color: red;
+      }
+
+    }
+  }
+
+  .colum-right{
+
+    width: 100%;
+
+    .input-height{
+      height: 44px;
+    }
+
+    i{
+      font-size: 20px !important;
+      margin-bottom: 0 !important;
+      padding: 0 !important;
+      background: none !important;
+      color: $color-primary-gry-300 !important;
+    }
+
+    .contato{
+      div:first-child{
+        position: relative;
+      }
+    }
+
+    .agendamento-repetir{
+
+      margin-top: 16px;
+
+      .settings-input{
+        border-right: none !important;
+      }
+
+      .settings-input-2{
+        border-left: none !important;
+      }
+
+      span{
+        background: none;
+      }
+    }
+
+  }
+}
+
+.main-footer{
+
+  .setting-sw{
+    .setting-config{
+      input{
+        height: 20px;
+        width: 40px;
+        margin-right: 8px;
+      }
+
+      label{
+        position: relative;
+        top: 3px;
+      }
+    }
+  }
+
+  .template-messenger{
+    margin-top: 16px;
+
+    div{
+      position: relative;
+    }
+
+    .enableFieldTemplate{
+      pointer-events: all;
+    }
+
+    .disabledFieldTemplate{
+      pointer-events: none;
+    }
+  }
+}
+
+.error-field{
+  font-size: 12px;
+  font-style: italic;
+  color: red;
+}
+
+.margin-top-err{
+  top: -20px;
+  position: relative;
+}
+
+.text-messenger{
+  margin-top: 16px;
+  div{
+    display: grid;
+
+    textarea{
+      border: 1px solid #BDBFC6;
+      border-radius: 8px;
+      padding: 8px;
+    }
+  }
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+

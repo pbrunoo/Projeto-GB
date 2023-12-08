@@ -1,0 +1,211 @@
+<gb-modal-confirm (actionData)="salveNewTicket()"></gb-modal-confirm>
+<gb-toast-message></gb-toast-message>
+
+<div class="row">
+  <div class="main-top-row">
+    <div class="col-10 row-info">
+      <div><span>Novo ticket</span></div>
+      <div><i class="icon-ticket"></i><span> 1</span></div>
+      <div><i class="icon-people span-icon"></i><span> {{userData.name}}</span></div>
+      <div><span>Origem: </span></div>
+      <div><span>Formulário</span></div>
+      <div><span>
+          <hr>
+        </span> <span>*Campos obrigatórios</span></div>
+    </div>
+
+    <div class="col-2 div-relative">
+      <gb-status-drop-down
+        (outDropDownData)="getStatus($event)"
+        [dataDropDown] = "dropDownStatusReset"
+        [iconBall]="true"></gb-status-drop-down>
+    </div>
+  </div>
+
+  <div class="gb-ticket-main">
+
+    <!-- Left Column -->
+    <div class="left-column">
+      <label>Solicitante *</label>
+
+      <div>
+        <gb-drop-down-search-person
+          [dataPerson]="personData"
+          (outDropDownDataPerson)="getSelectedPerson($event)"
+          [name]="titleSearch">
+        </gb-drop-down-search-person>
+      </div>
+
+      <div class="selected-content">
+        <div class="selected-requester" *ngFor="let personData of personDataSelected; index as i">
+          <div class="selected-requestes-data">
+            <div><i class="icon-building"></i></div>
+            <div class="requester-info">
+              <span>{{personData.name}}</span>
+              <span>23.376.497/0001-42 - contat...</span>
+            </div>
+            <div><i (click)="removeDataSelected(i)" class="icon-trash remove-seleceted"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-responsible">
+        <label>Responsável *</label>
+        <div [ngClass]="disabledResponsable ? 'disabled-resposible' : ''">
+          <gb-drop-down-group
+            [dataPersonGroup]="responsData"
+            (outDropDownDataPersonGroup)="getResponsible($event)"
+            [names]="titleSearch">
+          </gb-drop-down-group>
+        </div>
+      </div>
+
+      <div class="checkbox-for-me">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" #toAssingForMe id="toAssingForMe" [checked]="assingForMe"
+          (change)="onCheckAssingToMeChanged(toAssingForMe.checked)">
+          <label class="form-check-label" for="toAssingForMe">
+            Atribuir para mim
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group ticket-resume">
+        <label for="exampleInputEmail1">Assunto *</label>
+        <input type="text" [(ngModel)]="subjectTicket" (keypress)="changeSubjectTicket()" class="form-control assumpt-ticket" id="ticketAssunto" aria-describedby="ticketAssunto">
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 px-2">
+          <div class="div-two-dropdw div-relative">
+            <label>Categoria *</label>
+            <gb-status-drop-down (outDropDownData)="getCategory($event)" [dataDropDown]="dataCategory" [contentColor]="2" [iconBall]="false"></gb-status-drop-down>
+          </div>
+        </div>
+        <div class="col-md-6 px-2">
+          <div class="div-relative">
+            <label>Prioridade *</label>
+            <gb-status-drop-down (outDropDownData)="getPriority($event)" [dataDropDown]="dataPriority" [contentColor]="2" [iconBall]="true"></gb-status-drop-down>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+      <div  class="tikt-txtf">
+        <!-- Abas -->
+        <div class="tikt-txtf-abas">
+          <div (click)="selectAba(1)" [ngClass]="abaSelectedOne ? 'active-aba' : ''">
+            <span>Resposta pública</span>
+          </div>
+          <div (click)="selectAba(2)" [ngClass]="abaSelectedTwo ? 'active-aba-private' : ''">
+            <span>Resposta interna</span>
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <div>
+          <div class="tikt-areafile">
+            <textarea [(ngModel)]="subjectTicketMessage" (keypress)="changeMessagetTicket()" class="tikt-txtf-textarea" name="" id="" cols="30" rows="10"></textarea>
+            <div class="area-file">
+              <div *ngFor="let file of fileList; index as i">
+                <span class="span-1"><i class="icon-file"></i> <span>{{file.name}}</span> <i (click)="removeFileMessage(i)" class="icon-close file-remove"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-area" [ngClass]="abaSelectedTwo ? 'private-action-area' : ''">
+            <div class="groupp-upload">
+
+              <!-- <label for="file-input">
+                <i class="icon-clip anexo" placement="end" ngbTooltip="Adicionar anexo"></i>
+              </label>
+              <input (change)="changeFileSelected($event)" id="file-input" type="file" /> -->
+            </div>
+
+            <div class="cancel-btn">
+              <span>Cancelar</span>
+              <button type="button" class="btn"><i class="icon-add anexo"></i> Nova mensagem</button></div>
+          </div>
+        </div>
+
+        <div><hr></div>
+
+        <!-- Mensagens -->
+        <div *ngIf="false">
+          <div class="checkbox-show-messages">
+            <label class="form-check-label label-1" for="">
+              Mostrar:
+            </label>
+            <input class="form-check-input" type="checkbox" value="" id="publicMessage">
+            <label class="form-check-label label-2" for="publicMessage">
+              Resposta pública
+            </label>
+
+            <input class="form-check-input" type="checkbox" value="" id="privateMessage">
+            <label class="form-check-label label-3" for="privateMessage">
+              Resposta pública
+            </label>
+          </div>
+
+          <!-- TimeLine -->
+          <div class="show-box-message-main">
+
+            <div *ngFor="let msg of messageLists; index as i">
+              <div class="box-message-main">
+                <div><img src="../../../assets/images/Icon_timeline-1.svg" alt=""></div>
+                <div>
+                  <div class="user-message">
+                      <span>{{msg.name}}</span>
+                      <span>{{msg.dataMessage}}</span>
+                      <span>#{{msg.id}}</span>
+                  </div>
+                </div>
+                <div class="user-messagem-title-icons"><span><i class="icon-people"></i> Resposta pública</span><i class="icon-Edit i-first"></i>
+                  <i
+                    (click)="openWriteEditMessage(detailMessage, iconClicked)"
+                    class="icon-down i-second"
+                    #icon+i as #iconClicked
+                    >
+                  </i>
+
+                </div>
+              </div>
+
+              <div #idDetail+i as #detailMessage style="display: none" [ngClass]="isCollapsed ? '' : 'show-messages'">
+                <div class="first-message">
+                </div>
+
+                <div class="second-div-message">
+                  <div>
+                    <textarea name="" id="" cols="30" rows="10">{{msg.message}}</textarea>
+                  </div>
+
+                  <div class="area-file-2">
+                    <div>
+                      <span class="span-1"><i class="icon-file"></i> <span>Documento.pdf</span> <i class="icon-close"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+        <div>
+          <div class="main-button-save">
+            <div class="buttons-save">
+                <button type="button" class="btn btn-cancel"><i class="icon-close"></i>Cancelar</button>
+                <button type="button"[disabled]="disabledSaveBtn" class="btn btn-save" (click)="opeModal()"><i class="icon-check"></i>Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

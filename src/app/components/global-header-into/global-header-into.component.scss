@@ -1,0 +1,42 @@
+@import "../../../assets/scss/index.scss";
+
+.header-main{
+
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+
+    span{
+        display: contents;
+        font-size: 16px;
+        font-family: $font-family-bold;
+        color: $color-primary-gry-400;
+    }
+
+    span:after{
+        content: "";
+        border-bottom: solid 1px $color-primary-gry-400;
+        width: 100%;
+        margin: 0 16px;
+    }
+
+    button{
+        margin-right: 18px;
+        width: 144px;
+        height: 44px;
+        font-size: 12px;
+        font-family: $font-family-regular;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: #4285F4;
+        border-radius: 8px;
+        color: #fff;
+
+        i{
+            font-size: 15px;
+            margin-right: 10px;
+        }
+    }
+}

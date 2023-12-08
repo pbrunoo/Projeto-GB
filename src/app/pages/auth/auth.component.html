@@ -1,0 +1,10 @@
+<gb-toast-message></gb-toast-message>
+<div class="main">
+  <gb-login *ngIf="!showComponents" (inforLogin)="authAcess($event)"
+  (showRememberPassword)="showComponentsEvent($event)"
+  [errorAuth]="errorAccess">
+  </gb-login>
+  <gb-remember-password *ngIf="showComponents"
+  (showRememberPassword)="showComponentsEvent($event)"
+  (emitToastMessage)="showToast($event)"></gb-remember-password>
+</div>

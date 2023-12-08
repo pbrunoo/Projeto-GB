@@ -1,0 +1,173 @@
+/**
+* Fonts
+*/
+
+@font-face {
+    font-family: 'Inter-thin';
+    src: url('../fonts/Inter-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Inter-extra-light';
+    src: url('../fonts/Inter-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Inter-light';
+    src: url('../fonts/Inter-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Inter-regular';
+    src: url('../fonts/Inter-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Inter-medium';
+    src: url('../fonts/Inter-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Inter-semi-bold';
+    src: url('../fonts/Inter-SemiBold.ttf') format('truetype'), url('../fonts/Inter-SemiBold.ttf') format("truetype");;
+    font-weight: 600;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Inter-bold';
+    src: url('../fonts/Inter-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: bold;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Inter-extra-bold';
+    src: url('../fonts/Inter-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Inter-black';
+    src: url('../fonts/Inter-Black.ttf') format('truetype') url('../fonts/Inter-Black.ttf') format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: auto;
+}
+
+$font-family-thin: 'Inter-thin';
+$font-family-extra-light: 'Inter-extra-light';
+$font-family-light: 'Inter-light';
+$font-family-regular: 'Inter-regular';
+$font-family-medium: 'Inter-medium';
+$font-family-semi-bold: 'Inter-semi-bold';
+$font-family-bold: 'Inter-bold';
+$font-family-extra-bold: 'Inter-extra-bold';
+$font-family-extra-black: 'Inter-black';
+
+
+/**
+* Colors
+*/
+
+// Primary-Blue
+$color-primary-blue-100: #EDF5FF;
+$color-primary-blue-200: #4285F4;
+$color-primary-blue-300: #0B50C1;
+
+//Primary-Green
+$color-primary-green-100: #F1FEF8;
+$color-primary-green-200: #0F9B58;
+$color-primary-green-300: #095D34;
+
+//Primary-Yellow
+$color-primary-yellow-100: #FFFBF0;
+$color-primary-yellow-200: #F4B400;
+$color-primary-yellow-300: #A37D00;
+
+//Primary-Red
+$color-primary-red-100: #FDF3F2;
+$color-primary-red-200: #DB4437;
+$color-primary-red-300: #81170E;
+
+//Grayscale
+$color-primary-gry-0: #FFFFFF;
+$color-primary-gry-50: #F7F7FC;
+$color-primary-gry-100: #F3F4F8;
+$color-primary-gry-200: #BDBFC6;
+$color-primary-gry-300: #777986;
+$color-primary-gry-400: #404252;
+$color-primary-gry-500: #101223;
+$color-primary-gry-25: rgba(16, 18, 35, 0.25);
+
+/**
+* Espaçamentos
+*/
+
+//Vertical
+$v-small-4px: 0.25rem;
+$v-small-8px: 0.5rem;
+$v-small-16px: 1rem;
+
+$v-medium-20px: 1.25rem;
+$v-medium-24px: 1.5rem;
+$v-medium-32px: 2rem;
+$v-medium-40px: 2.5rem;
+$v-medium-48px: 3rem;
+
+//horizontal
+$h-small-4px: 0.25rem;
+$h-small-8px: 0.5rem;
+$h-small-16px: 1rem;
+
+$h-medium-20px: 1.25rem;
+$h-medium-24px: 1.5rem;
+$h-medium-32px: 2rem;
+$h-medium-40px: 2.5rem;
+$h-medium-48px: 3rem;
+
+/**
+* Sombras
+*/
+
+$shadow-small: 0px 4px 8px rgba(16, 18, 34, 0.16);
+$shadow-medium: 0px 4px 20px rgba(16, 18, 34, 0.2);
+$shadow-medium: 0px 16px 24px rgba(16, 18, 34, 0.4);
+
+/**
+* Bordas Radius
+*/
+
+$border_radius-small: $v-small-4px;
+$border_radius-medium: $v-small-8px;
+$border_radius-large: $v-small-16px;
+$border_radius-circular: 5000px;
+$border_radius-pill: 0 5000px;
+
+/**
+* Bordas Width
+*/
+
+$border_width-dashed-hairline: 1px dashed $color-primary-gry-200;
+$border_width-hairline: 1px solid $color-primary-gry-200;
+$border_width-thin: 2px solid $color-primary-gry-200;
+$border_width-thick: 4px solid $color-primary-gry-200;
